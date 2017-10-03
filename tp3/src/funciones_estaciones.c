@@ -35,12 +35,28 @@ const char * table_mensual_header[] = {
 	NULL
 };
 
+const char * table_promedio_header[] = {
+	"<div class=\"container-fluid\">",
+	"<div class=\"panel panel-default\">",
+	"<table class=\"table\">",
+	"<thead>",
+	"<tr>",
+	"<th> Estacion </th>",
+	"<th> Promedio </th>",
+	"</tr>",
+	"</thead>",
+	"<tbody>",
+	NULL
+};
+
+
 void print_table_header(FILE *f)
 {
 	for (int i = 0; table_header[i] != NULL ; ++i)
 	{
 		fprintf ( f, "%s", table_header[i] );
 	}
+	return;
 }
 
 void print_table_mes_header(FILE *f)
@@ -49,6 +65,16 @@ void print_table_mes_header(FILE *f)
 	{
 		fprintf ( f, "%s", table_mensual_header[i] );
 	}
+	return;
+}
+
+void print_table_promedio_header(FILE *f)
+{
+	for (int i = 0; table_promedio_header[i] != NULL ; ++i)
+	{
+		fprintf ( f, "%s", table_promedio_header[i] );
+	}
+	return;
 }
 void listar()
 {
@@ -116,16 +142,18 @@ fclose ( f );
 
 void promedio_variable ( char * variable )
 {
-	FILE *fp = fopen ( A_PROM_VAR, "w" );
+	FILE *f = fopen ( A_PROM_VAR, "w" );
 
-	if ( fp == NULL )
+	if ( f == NULL )
 	{
 		printf ( "Error opening file!\n" );
 		exit ( 1 );
 	}
 	else
 	{
-		fprintf ( fp, "PROMEDIOS DE LA VARIABLE %s \n \n", variable);
+		//fprintf ( fp, "PROMEDIOS DE LA VARIABLE %s \n \n", variable);
+		fprintf(f, "<h2 class=\"text-center\"> Promedios de la variable  %s </h2> </br>", variable);
+		print_table_promedio_header(f);
 
 		float acumulador = 0, contador = 0;
 
@@ -135,17 +163,18 @@ void promedio_variable ( char * variable )
 			{
 				if ( strcmp ( variable, "Temperatura" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].temp; }
 				else if ( strcmp ( variable, "Humedad" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].hum; }
-				else if ( strcmp ( variable, "Punto de rocio" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].pto_roc; }
+				else if ( strcmp ( variable, "Punto-de-Rocio" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].pto_roc; }
 				else if ( strcmp ( variable, "Precipitacion" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].precip; }
-				else if ( strcmp ( variable, "Velocidad del viento" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].vel_viento; }
-				else if ( strcmp ( variable, "Rafaga Maxima" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].raf_max; }
+				else if ( strcmp ( variable, "Velocidad-Viento" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].vel_viento; }
+				else if ( strcmp ( variable, "Rafaga-Maxima" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].raf_max; }
 				else if ( strcmp ( variable, "Presion" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].presion; }
-				else if ( strcmp ( variable, "Radiacion Solar" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].rad_solar; }
-				else if ( strcmp ( variable, "Temperatura del suelo 1" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].temp_suelo; }
+				else if ( strcmp ( variable, "Radiacion-Solar" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].rad_solar; }
+				else if ( strcmp ( variable, "Temperatura-Suelo" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].temp_suelo; }
 				else
 				{
-					perror ( "VARIABLE NO VALIDA" );
-					return;
+					//perror ( "VARIABLE NO VALIDA" );
+					//return;
+					acumulador = -1;
 				}
 
 				if ( acumulador < 0 ) { break; }
@@ -153,13 +182,27 @@ void promedio_variable ( char * variable )
 				contador = contador + 1;
 			}
 
-					if ( acumulador >= 0 ) { fprintf ( fp, "PROMEDIO %s --> %f \n", estaciones[i].nombre, acumulador / contador ); } //promedio[i] = acumulador /contador;
-					else {fprintf ( fp, "ESTACION %s SIN DATOS \n", estaciones[i].nombre);}
+					/*if ( acumulador >= 0 ) { fprintf ( fp, "PROMEDIO %s --> %f \n", estaciones[i].nombre, acumulador / contador ); } //promedio[i] = acumulador /contador;
+					else {fprintf ( fp, "ESTACION %s SIN DATOS \n", estaciones[i].nombre);}*/
+					if ( acumulador >= 0 ) {
+						fprintf(f, "<tr>\n");
+						fprintf(f, "<td> %s </td> \n",  estaciones[i].nombre);
+						fprintf(f, "<td> %.3f </td> \n", acumulador / contador);
+						fprintf(f, "</tr>\n");
+					}
+					// fprintf ( fp, "PROMEDIO %s --> %f \n", estaciones[i].nombre, acumulador / contador ); } //promedio[i] = acumulador /contador;
+					else {
+						fprintf(f, "<tr>\n");
+						fprintf(f, "<td> %s </td> \n",  estaciones[i].nombre);
+						fprintf(f, "<td> %s </td> \n", "Sin Datos");
+						fprintf(f, "</tr>\n");
+					}
+						//fprintf ( fp, "ESTACION %s SIN DATOS \n", estaciones[i].nombre);}
 					acumulador = 0;
 					contador = 0;
 				}
 
-				fclose ( fp );
+				fclose ( f );
 			}
 		}
 
