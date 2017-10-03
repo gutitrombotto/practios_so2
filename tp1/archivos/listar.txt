@@ -1,0 +1,75 @@
+-----------------------------------------------------------
+ESTACION:Yacanto Norte - E01, ID: 30135
+SENSORES CON DATOS 
+-----------------------------------------------------------
+[Temperatura] HAY DATOS  
+[Humedad] HAY DATOS  
+[Punto de rocio] HAY DATOS  
+[Precipitacion] HAY DATOS  
+[Velocidad del viento] HAY DATOS  
+[Direccion] HAY DATOS  
+[Rafaga Maxima] HAY DATOS  
+[Presion] HAY DATOS  
+[Radiacion Solar] NO HAY DATOS  
+[Temperatura del suelo1] NO HAY DATOS  
+
+-----------------------------------------------------------
+ESTACION:MagyaCba 60 cuadras, ID: 30057
+SENSORES CON DATOS 
+-----------------------------------------------------------
+[Temperatura] HAY DATOS  
+[Humedad] HAY DATOS  
+[Punto de rocio] HAY DATOS  
+[Precipitacion] HAY DATOS  
+[Velocidad del viento] HAY DATOS  
+[Direccion] HAY DATOS  
+[Rafaga Maxima] HAY DATOS  
+[Presion] HAY DATOS  
+[Radiacion Solar] HAY DATOS  
+[Temperatura del suelo1] HAY DATOS  
+
+-----------------------------------------------------------
+ESTACION:MagyaCba La Cumbrecita, ID: 30061
+SENSORES CON DATOS 
+-----------------------------------------------------------
+[Temperatura] HAY DATOS  
+[Humedad] HAY DATOS  
+[Punto de rocio] HAY DATOS  
+[Precipitacion] HAY DATOS  
+[Velocidad del viento] HAY DATOS  
+[Direccion] HAY DATOS  
+[Rafaga Maxima] HAY DATOS  
+[Presion] HAY DATOS  
+[Radiacion Solar] HAY DATOS  
+[Temperatura del suelo1] HAY DATOS  
+
+-----------------------------------------------------------
+ESTACION:Cerro Obero - Capilla del Monte, ID: 30099
+SENSORES CON DATOS 
+-----------------------------------------------------------
+[Temperatura] HAY DATOS  
+[Humedad] HAY DATOS  
+[Punto de rocio] HAY DATOS  
+[Precipitacion] HAY DATOS  
+[Velocidad del viento] HAY DATOS  
+[Direccion] HAY DATOS  
+[Rafaga Maxima] HAY DATOS  
+[Presion] HAY DATOS  
+[Radiacion Solar] NO HAY DATOS  
+[Temperatura del suelo1] NO HAY DATOS  
+
+-----------------------------------------------------------
+ESTACION:Magyacba Oliva, ID: 30069
+SENSORES CON DATOS 
+-----------------------------------------------------------
+[Temperatura] HAY DATOS  
+[Humedad] HAY DATOS  
+[Punto de rocio] HAY DATOS  
+[Precipitacion] HAY DATOS  
+[Velocidad del viento] HAY DATOS  
+[Direccion] HAY DATOS  
+[Rafaga Maxima] HAY DATOS  
+[Presion] HAY DATOS  
+[Radiacion Solar] HAY DATOS  
+[Temperatura del suelo1] HAY DATOS  
+

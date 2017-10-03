@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Filadd - Panel de Administracion</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+      </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Mostrar Menú</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://filadd.com/admin">Filadd - Panel de Administracion</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/admin">Inicio</a></li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" >
+                Instituciones <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/admin/universidades">Universidades</a></li>
+                <li><a href="/admin/facultades">Facultades</a></li>
+                <li><a href="/admin/carreras">Carreras</a></li>
+              </ul>
+            </li>
+            <li><a href="/admin/materias">Materias</a></li>
+            <li><a href="/admin/profesores">Profesores</a></li>
+            <li><a href="/admin/aportes">Aportes</a></li>
+            <li><a href="/admin/usuarios">Usuarios</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <!-- Authentication Links -->
+                          <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                  Guti Trombotto <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="https://filadd.com/logout"><i class="glyphicon glyphicon-logout"></i>Salir</a></li>
+                </ul>
+              </li>
+                      </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container-fluid">
+      <div class="panel">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-8">
+        <h3>Listado de Universidades</h3>
+      </div>
+      <div class="col-xs-4 text-right">
+        <a href="/admin/universidades/create" class="btn-titulo btn btn-primary">Agregar Universidad</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Abreviatura</th>
+              <th width="100px">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>Universidad Nacional de C&oacute;rdoba</td>
+                <td>UNC</td>
+                <td>
+                  <form class="btn-group" action="/admin/universidades/1" method="POST">
+                    <a href="/admin/universidades/1/edit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Universidad Siglo XXI</td>
+                <td>US21</td>
+                <td>
+                  <form class="btn-group" action="/admin/universidades/2" method="POST">
+                    <a href="/admin/universidades/2/edit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Universidad Blas Pascal</td>
+                <td>UBP</td>
+                <td>
+                  <form class="btn-group" action="/admin/universidades/3" method="POST">
+                    <a href="/admin/universidades/3/edit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Universidad Cat&oacute;lica de C&oacute;rdoba</td>
+                <td>UCC</td>
+                <td>
+                  <form class="btn-group" action="/admin/universidades/4" method="POST">
+                    <a href="/admin/universidades/4/edit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                          <tr>
+                <td>Universidad de Buenos Aires</td>
+                <td>UBA</td>
+                <td>
+                  <form class="btn-group" action="/admin/universidades/5" method="POST">
+                    <a href="/admin/universidades/5/edit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-pencil"></i>
+                    </a>
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">
+                      <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12">
+        
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+      </body>
+</html>

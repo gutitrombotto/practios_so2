@@ -1,0 +1,11 @@
+Datos desde el 01/02/2017 hasta el 28/02/2017,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+Numero,Estacion,ID Localidad,Fecha,Temperatura [�C],Humedad [%HR],Punto de Roc�o [�C],Precipitaci�n [mm],Velocidad Viento [Km/h],Direcci�n Viento,Rafaga Maxima [Km/h],Presi�n [hPa],Radiaci�n Solar [W/m2],Temperatura Suelo 1 [�C],Temperatura Suelo 2 [�C],Temperatura Suelo 3 [�C],Humedad Suelo 1 [%grav],Humedad Suelo 2 [%grav],Humedad Suelo 3 [%grav],Humedad de Hoja [%]
+30135,Yacanto Norte - E01,0,01/02/2017 00:00,19.9,64.8,13.1,0,3.9,OESTE NOROESTE,8.1,882.5,--,--,--,--,--,--,--,--
+30135,Yacanto Norte - E01,0,01/02/2017 00:10,19.4,67.2,13.2,0.2,17.5,NORTE,31.8,883.8,--,--,--,--,--,--,--,--
+30057,MagyaCba 60 cuadras,0,01/02/2017 00:00,20.6,77.3,16.5,0,0.8,SUDOESTE SUR,2.5,961.9,0,25.7,--,--,--,--,--,--
+30057,MagyaCba 60 cuadras,0,01/02/2017 00:10,20.6,76.5,16.3,0,0.6,SUDOESTE SUR,2.3,961.9,0,25.6,--,--,--,--,--,--
+30099,Cerro Obero - Capilla del Monte,0,06/02/2017 15:30,20.4,65.6,13.7,0,7.9,NORTE,18.3,813.8,--,--,--,--,--,--,--,--
+30099,Cerro Obero - Capilla del Monte,0,06/02/2017 15:40,21.5,59.7,13.3,0,5.2,NOR NORESTE,12,813.8,--,--,--,--,--,--,--,--
+30069,Magyacba Oliva,0,07/02/2017 01:20,16.8,93.6,15.8,0,0,NORTE,0,978.1,0,25,--,--,--,--,--,--
+30069,Magyacba Oliva,0,07/02/2017 01:30,16.6,93.9,15.6,0,0,NORTE,0,979.4,0,25,--,--,--,--,--,--
