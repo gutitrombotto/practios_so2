@@ -1,0 +1,2305 @@
+<!DOCTYPE html><html lang="en"><head> 
+<meta charset="utf-8" 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body><nav class="navbar navbar-inverse navbar-default navbar-static-top"><div class="container-fluid"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only">Mostrar Menú</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#">Trabajo Practico 3: Sistemas Operativos II</a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav"><li><a href="/tp3/index.html">Inicio</a></li></ul><ul class="nav navbar-nav navbar-right"><li><a href="/tp3/cgi/sistema.cgi">Info Sistema</a></li><li><a href="/tp3/html/estaciones.html">Estaciones Meteorologicas</a></li><li><a href="/tp3/cgi/modulos.cgi">Drivers</a></li><li><a href="#">Agustin Trombotto</a></li></ul></div></div></nav><div class="container-fluid"><div class="row"><div class="col-md-10 col-md-offset-1">  <div class="panel panel-primary"><div class="panel-heading">Modulos del Kernel</div><div class="panel-body"> <table class="table"><thead><tr><th> Nombre Modulo </th><th> Tamaño </th><th> Usado por </th></tr></thead><tbody><tr>
+<td> xt_tcpudp </td> 
+<td> 16384 </td> 
+<td> 10
+ </td>
+</tr>
+<tr>
+<td> veth </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ipt_MASQUERADE </td> 
+<td> 16384 </td> 
+<td> 5
+ </td>
+</tr>
+<tr>
+<td> nf_nat_masquerade_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 ipt_MASQUERADE
+ </td> 
+</tr>
+<tr>
+<td> xfrm_user </td> 
+<td> 32768 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> xfrm_algo </td> 
+<td> 16384 </td> 
+<td> 1 xfrm_user
+ </td> 
+</tr>
+<tr>
+<td> iptable_nat </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> xt_addrtype </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> iptable_filter </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> ip_tables </td> 
+<td> 24576 </td> 
+<td> 2 iptable_filter,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> xt_conntrack </td> 
+<td> 16384 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> x_tables </td> 
+<td> 36864 </td> 
+<td> 7 xt_nat,ip_tables,iptable_filter,xt_tcpudp,ipt_MASQUERADE,xt_addrtype,xt_conntrack
+ </td> 
+</tr>
+<tr>
+<td> br_netfilter </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> bridge </td> 
+<td> 139264 </td> 
+<td> 1 br_netfilter
+ </td> 
+</tr>
+<tr>
+<td> stp </td> 
+<td> 16384 </td> 
+<td> 1 bridge
+ </td> 
+</tr>
+<tr>
+<td> llc </td> 
+<td> 16384 </td> 
+<td> 2 bridge,stp
+ </td> 
+</tr>
+<tr>
+<td> aufs </td> 
+<td> 241664 </td> 
+<td> 525
+ </td>
+</tr>
+<tr>
+<td> pci_stub </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> vboxpci </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetadp </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetflt </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxdrv </td> 
+<td> 458752 </td> 
+<td> 3 vboxnetadp,vboxnetflt,vboxpci
+ </td> 
+</tr>
+<tr>
+<td> openvswitch </td> 
+<td> 114688 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> nf_conntrack_ipv6 </td> 
+<td> 20480 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> nf_nat_ipv6 </td> 
+<td> 16384 </td> 
+<td> 1 openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack_ipv4 </td> 
+<td> 16384 </td> 
+<td> 15
+ </td>
+</tr>
+<tr>
+<td> nf_defrag_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 nf_conntrack_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_nat_ipv4 </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> nf_defrag_ipv6 </td> 
+<td> 36864 </td> 
+<td> 2 nf_conntrack_ipv6,openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_nat </td> 
+<td> 28672 </td> 
+<td> 5 xt_nat,openvswitch,nf_nat_ipv6,nf_nat_masquerade_ipv4,nf_nat_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack </td> 
+<td> 131072 </td> 
+<td> 10 xt_nat,nf_conntrack_ipv6,openvswitch,nf_conntrack_ipv4,ipt_MASQUERADE,nf_nat_ipv6,nf_nat_masquerade_ipv4,xt_conntrack,nf_nat_ipv4,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> libcrc32c </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> vboxsf </td> 
+<td> 49152 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> joydev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_intel8x0 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> snd_ac97_codec </td> 
+<td> 131072 </td> 
+<td> 1 snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> ac97_bus </td> 
+<td> 16384 </td> 
+<td> 1 snd_ac97_codec
+ </td> 
+</tr>
+<tr>
+<td> snd_pcm </td> 
+<td> 102400 </td> 
+<td> 2 snd_ac97_codec,snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> vboxvideo </td> 
+<td> 53248 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi_event </td> 
+<td> 16384 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_rawmidi </td> 
+<td> 32768 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_seq </td> 
+<td> 65536 </td> 
+<td> 2 snd_seq_midi_event,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> ttm </td> 
+<td> 98304 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> drm_kms_helper </td> 
+<td> 151552 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> snd_seq_device </td> 
+<td> 16384 </td> 
+<td> 3 snd_seq,snd_rawmidi,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_timer </td> 
+<td> 32768 </td> 
+<td> 2 snd_seq,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> snd </td> 
+<td> 77824 </td> 
+<td> 11 snd_seq,snd_ac97_codec,snd_timer,snd_rawmidi,snd_intel8x0,snd_seq_device,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> drm </td> 
+<td> 352256 </td> 
+<td> 6 vboxvideo,ttm,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> fb_sys_fops </td> 
+<td> 16384 </td> 
+<td> 1 drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> intel_rapl_perf </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> soundcore </td> 
+<td> 16384 </td> 
+<td> 1 snd
+ </td> 
+</tr>
+<tr>
+<td> input_leds </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> syscopyarea </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> sysfillrect </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> serio_raw </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> sysimgblt </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> i2c_piix4 </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxguest </td> 
+<td> 294912 </td> 
+<td> 6 vboxsf,vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> mac_hid </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport_pc </td> 
+<td> 32768 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ppdev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> lp </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport </td> 
+<td> 49152 </td> 
+<td> 3 lp,parport_pc,ppdev
+ </td> 
+</tr>
+<tr>
+<td> autofs4 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> hid_generic </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> usbhid </td> 
+<td> 53248 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> hid </td> 
+<td> 118784 </td> 
+<td> 2 hid_generic,usbhid
+ </td> 
+</tr>
+<tr>
+<td> psmouse </td> 
+<td> 139264 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ahci </td> 
+<td> 36864 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> libahci </td> 
+<td> 32768 </td> 
+<td> 1 ahci
+ </td> 
+</tr>
+<tr>
+<td> e1000 </td> 
+<td> 143360 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> fjes </td> 
+<td> 77824 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> pata_acpi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> video </td> 
+<td> 40960 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> Module </td> 
+<td> Size </td> 
+<td> Used by
+ </td> 
+</tr>
+<tr>
+<td> xt_nat </td> 
+<td> 16384 </td> 
+<td> 6
+ </td>
+</tr>
+<tr>
+<td> xt_tcpudp </td> 
+<td> 16384 </td> 
+<td> 10
+ </td>
+</tr>
+<tr>
+<td> veth </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ipt_MASQUERADE </td> 
+<td> 16384 </td> 
+<td> 5
+ </td>
+</tr>
+<tr>
+<td> nf_nat_masquerade_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 ipt_MASQUERADE
+ </td> 
+</tr>
+<tr>
+<td> xfrm_user </td> 
+<td> 32768 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> xfrm_algo </td> 
+<td> 16384 </td> 
+<td> 1 xfrm_user
+ </td> 
+</tr>
+<tr>
+<td> iptable_nat </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> xt_addrtype </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> iptable_filter </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> ip_tables </td> 
+<td> 24576 </td> 
+<td> 2 iptable_filter,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> xt_conntrack </td> 
+<td> 16384 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> x_tables </td> 
+<td> 36864 </td> 
+<td> 7 xt_nat,ip_tables,iptable_filter,xt_tcpudp,ipt_MASQUERADE,xt_addrtype,xt_conntrack
+ </td> 
+</tr>
+<tr>
+<td> br_netfilter </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> bridge </td> 
+<td> 139264 </td> 
+<td> 1 br_netfilter
+ </td> 
+</tr>
+<tr>
+<td> stp </td> 
+<td> 16384 </td> 
+<td> 1 bridge
+ </td> 
+</tr>
+<tr>
+<td> llc </td> 
+<td> 16384 </td> 
+<td> 2 bridge,stp
+ </td> 
+</tr>
+<tr>
+<td> aufs </td> 
+<td> 241664 </td> 
+<td> 525
+ </td>
+</tr>
+<tr>
+<td> pci_stub </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> vboxpci </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetadp </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetflt </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxdrv </td> 
+<td> 458752 </td> 
+<td> 3 vboxnetadp,vboxnetflt,vboxpci
+ </td> 
+</tr>
+<tr>
+<td> openvswitch </td> 
+<td> 114688 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> nf_conntrack_ipv6 </td> 
+<td> 20480 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> nf_nat_ipv6 </td> 
+<td> 16384 </td> 
+<td> 1 openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack_ipv4 </td> 
+<td> 16384 </td> 
+<td> 15
+ </td>
+</tr>
+<tr>
+<td> nf_defrag_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 nf_conntrack_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_nat_ipv4 </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> nf_defrag_ipv6 </td> 
+<td> 36864 </td> 
+<td> 2 nf_conntrack_ipv6,openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_nat </td> 
+<td> 28672 </td> 
+<td> 5 xt_nat,openvswitch,nf_nat_ipv6,nf_nat_masquerade_ipv4,nf_nat_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack </td> 
+<td> 131072 </td> 
+<td> 10 xt_nat,nf_conntrack_ipv6,openvswitch,nf_conntrack_ipv4,ipt_MASQUERADE,nf_nat_ipv6,nf_nat_masquerade_ipv4,xt_conntrack,nf_nat_ipv4,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> libcrc32c </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> vboxsf </td> 
+<td> 49152 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> joydev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_intel8x0 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> snd_ac97_codec </td> 
+<td> 131072 </td> 
+<td> 1 snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> ac97_bus </td> 
+<td> 16384 </td> 
+<td> 1 snd_ac97_codec
+ </td> 
+</tr>
+<tr>
+<td> snd_pcm </td> 
+<td> 102400 </td> 
+<td> 2 snd_ac97_codec,snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> vboxvideo </td> 
+<td> 53248 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi_event </td> 
+<td> 16384 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_rawmidi </td> 
+<td> 32768 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_seq </td> 
+<td> 65536 </td> 
+<td> 2 snd_seq_midi_event,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> ttm </td> 
+<td> 98304 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> drm_kms_helper </td> 
+<td> 151552 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> snd_seq_device </td> 
+<td> 16384 </td> 
+<td> 3 snd_seq,snd_rawmidi,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_timer </td> 
+<td> 32768 </td> 
+<td> 2 snd_seq,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> snd </td> 
+<td> 77824 </td> 
+<td> 11 snd_seq,snd_ac97_codec,snd_timer,snd_rawmidi,snd_intel8x0,snd_seq_device,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> drm </td> 
+<td> 352256 </td> 
+<td> 6 vboxvideo,ttm,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> fb_sys_fops </td> 
+<td> 16384 </td> 
+<td> 1 drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> intel_rapl_perf </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> soundcore </td> 
+<td> 16384 </td> 
+<td> 1 snd
+ </td> 
+</tr>
+<tr>
+<td> input_leds </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> syscopyarea </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> sysfillrect </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> serio_raw </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> sysimgblt </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> i2c_piix4 </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxguest </td> 
+<td> 294912 </td> 
+<td> 6 vboxsf,vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> mac_hid </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport_pc </td> 
+<td> 32768 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ppdev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> lp </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport </td> 
+<td> 49152 </td> 
+<td> 3 lp,parport_pc,ppdev
+ </td> 
+</tr>
+<tr>
+<td> autofs4 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> hid_generic </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> usbhid </td> 
+<td> 53248 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> hid </td> 
+<td> 118784 </td> 
+<td> 2 hid_generic,usbhid
+ </td> 
+</tr>
+<tr>
+<td> psmouse </td> 
+<td> 139264 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ahci </td> 
+<td> 36864 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> libahci </td> 
+<td> 32768 </td> 
+<td> 1 ahci
+ </td> 
+</tr>
+<tr>
+<td> e1000 </td> 
+<td> 143360 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> fjes </td> 
+<td> 77824 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> pata_acpi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> video </td> 
+<td> 40960 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> Module </td> 
+<td> Size </td> 
+<td> Used by
+ </td> 
+</tr>
+<tr>
+<td> xt_nat </td> 
+<td> 16384 </td> 
+<td> 6
+ </td>
+</tr>
+<tr>
+<td> xt_tcpudp </td> 
+<td> 16384 </td> 
+<td> 10
+ </td>
+</tr>
+<tr>
+<td> veth </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ipt_MASQUERADE </td> 
+<td> 16384 </td> 
+<td> 5
+ </td>
+</tr>
+<tr>
+<td> nf_nat_masquerade_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 ipt_MASQUERADE
+ </td> 
+</tr>
+<tr>
+<td> xfrm_user </td> 
+<td> 32768 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> xfrm_algo </td> 
+<td> 16384 </td> 
+<td> 1 xfrm_user
+ </td> 
+</tr>
+<tr>
+<td> iptable_nat </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> xt_addrtype </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> iptable_filter </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> ip_tables </td> 
+<td> 24576 </td> 
+<td> 2 iptable_filter,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> xt_conntrack </td> 
+<td> 16384 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> x_tables </td> 
+<td> 36864 </td> 
+<td> 7 xt_nat,ip_tables,iptable_filter,xt_tcpudp,ipt_MASQUERADE,xt_addrtype,xt_conntrack
+ </td> 
+</tr>
+<tr>
+<td> br_netfilter </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> bridge </td> 
+<td> 139264 </td> 
+<td> 1 br_netfilter
+ </td> 
+</tr>
+<tr>
+<td> stp </td> 
+<td> 16384 </td> 
+<td> 1 bridge
+ </td> 
+</tr>
+<tr>
+<td> llc </td> 
+<td> 16384 </td> 
+<td> 2 bridge,stp
+ </td> 
+</tr>
+<tr>
+<td> aufs </td> 
+<td> 241664 </td> 
+<td> 525
+ </td>
+</tr>
+<tr>
+<td> pci_stub </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> vboxpci </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetadp </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetflt </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxdrv </td> 
+<td> 458752 </td> 
+<td> 3 vboxnetadp,vboxnetflt,vboxpci
+ </td> 
+</tr>
+<tr>
+<td> openvswitch </td> 
+<td> 114688 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> nf_conntrack_ipv6 </td> 
+<td> 20480 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> nf_nat_ipv6 </td> 
+<td> 16384 </td> 
+<td> 1 openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack_ipv4 </td> 
+<td> 16384 </td> 
+<td> 15
+ </td>
+</tr>
+<tr>
+<td> nf_defrag_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 nf_conntrack_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_nat_ipv4 </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> nf_defrag_ipv6 </td> 
+<td> 36864 </td> 
+<td> 2 nf_conntrack_ipv6,openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_nat </td> 
+<td> 28672 </td> 
+<td> 5 xt_nat,openvswitch,nf_nat_ipv6,nf_nat_masquerade_ipv4,nf_nat_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack </td> 
+<td> 131072 </td> 
+<td> 10 xt_nat,nf_conntrack_ipv6,openvswitch,nf_conntrack_ipv4,ipt_MASQUERADE,nf_nat_ipv6,nf_nat_masquerade_ipv4,xt_conntrack,nf_nat_ipv4,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> libcrc32c </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> vboxsf </td> 
+<td> 49152 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> joydev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_intel8x0 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> snd_ac97_codec </td> 
+<td> 131072 </td> 
+<td> 1 snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> ac97_bus </td> 
+<td> 16384 </td> 
+<td> 1 snd_ac97_codec
+ </td> 
+</tr>
+<tr>
+<td> snd_pcm </td> 
+<td> 102400 </td> 
+<td> 2 snd_ac97_codec,snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> vboxvideo </td> 
+<td> 53248 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi_event </td> 
+<td> 16384 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_rawmidi </td> 
+<td> 32768 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_seq </td> 
+<td> 65536 </td> 
+<td> 2 snd_seq_midi_event,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> ttm </td> 
+<td> 98304 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> drm_kms_helper </td> 
+<td> 151552 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> snd_seq_device </td> 
+<td> 16384 </td> 
+<td> 3 snd_seq,snd_rawmidi,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_timer </td> 
+<td> 32768 </td> 
+<td> 2 snd_seq,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> snd </td> 
+<td> 77824 </td> 
+<td> 11 snd_seq,snd_ac97_codec,snd_timer,snd_rawmidi,snd_intel8x0,snd_seq_device,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> drm </td> 
+<td> 352256 </td> 
+<td> 6 vboxvideo,ttm,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> fb_sys_fops </td> 
+<td> 16384 </td> 
+<td> 1 drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> intel_rapl_perf </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> soundcore </td> 
+<td> 16384 </td> 
+<td> 1 snd
+ </td> 
+</tr>
+<tr>
+<td> input_leds </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> syscopyarea </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> sysfillrect </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> serio_raw </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> sysimgblt </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> i2c_piix4 </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxguest </td> 
+<td> 294912 </td> 
+<td> 6 vboxsf,vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> mac_hid </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport_pc </td> 
+<td> 32768 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ppdev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> lp </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport </td> 
+<td> 49152 </td> 
+<td> 3 lp,parport_pc,ppdev
+ </td> 
+</tr>
+<tr>
+<td> autofs4 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> hid_generic </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> usbhid </td> 
+<td> 53248 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> hid </td> 
+<td> 118784 </td> 
+<td> 2 hid_generic,usbhid
+ </td> 
+</tr>
+<tr>
+<td> psmouse </td> 
+<td> 139264 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ahci </td> 
+<td> 36864 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> libahci </td> 
+<td> 32768 </td> 
+<td> 1 ahci
+ </td> 
+</tr>
+<tr>
+<td> e1000 </td> 
+<td> 143360 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> fjes </td> 
+<td> 77824 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> pata_acpi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> video </td> 
+<td> 40960 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> Module </td> 
+<td> Size </td> 
+<td> Used by
+ </td> 
+</tr>
+<tr>
+<td> xt_nat </td> 
+<td> 16384 </td> 
+<td> 6
+ </td>
+</tr>
+<tr>
+<td> xt_tcpudp </td> 
+<td> 16384 </td> 
+<td> 10
+ </td>
+</tr>
+<tr>
+<td> veth </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ipt_MASQUERADE </td> 
+<td> 16384 </td> 
+<td> 5
+ </td>
+</tr>
+<tr>
+<td> nf_nat_masquerade_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 ipt_MASQUERADE
+ </td> 
+</tr>
+<tr>
+<td> xfrm_user </td> 
+<td> 32768 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> xfrm_algo </td> 
+<td> 16384 </td> 
+<td> 1 xfrm_user
+ </td> 
+</tr>
+<tr>
+<td> iptable_nat </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> xt_addrtype </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> iptable_filter </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> ip_tables </td> 
+<td> 24576 </td> 
+<td> 2 iptable_filter,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> xt_conntrack </td> 
+<td> 16384 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> x_tables </td> 
+<td> 36864 </td> 
+<td> 7 xt_nat,ip_tables,iptable_filter,xt_tcpudp,ipt_MASQUERADE,xt_addrtype,xt_conntrack
+ </td> 
+</tr>
+<tr>
+<td> br_netfilter </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> bridge </td> 
+<td> 139264 </td> 
+<td> 1 br_netfilter
+ </td> 
+</tr>
+<tr>
+<td> stp </td> 
+<td> 16384 </td> 
+<td> 1 bridge
+ </td> 
+</tr>
+<tr>
+<td> llc </td> 
+<td> 16384 </td> 
+<td> 2 bridge,stp
+ </td> 
+</tr>
+<tr>
+<td> aufs </td> 
+<td> 241664 </td> 
+<td> 525
+ </td>
+</tr>
+<tr>
+<td> pci_stub </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> vboxpci </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetadp </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetflt </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxdrv </td> 
+<td> 458752 </td> 
+<td> 3 vboxnetadp,vboxnetflt,vboxpci
+ </td> 
+</tr>
+<tr>
+<td> openvswitch </td> 
+<td> 114688 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> nf_conntrack_ipv6 </td> 
+<td> 20480 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> nf_nat_ipv6 </td> 
+<td> 16384 </td> 
+<td> 1 openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack_ipv4 </td> 
+<td> 16384 </td> 
+<td> 15
+ </td>
+</tr>
+<tr>
+<td> nf_defrag_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 nf_conntrack_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_nat_ipv4 </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> nf_defrag_ipv6 </td> 
+<td> 36864 </td> 
+<td> 2 nf_conntrack_ipv6,openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_nat </td> 
+<td> 28672 </td> 
+<td> 5 xt_nat,openvswitch,nf_nat_ipv6,nf_nat_masquerade_ipv4,nf_nat_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack </td> 
+<td> 131072 </td> 
+<td> 10 xt_nat,nf_conntrack_ipv6,openvswitch,nf_conntrack_ipv4,ipt_MASQUERADE,nf_nat_ipv6,nf_nat_masquerade_ipv4,xt_conntrack,nf_nat_ipv4,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> libcrc32c </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> vboxsf </td> 
+<td> 49152 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> joydev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_intel8x0 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> snd_ac97_codec </td> 
+<td> 131072 </td> 
+<td> 1 snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> ac97_bus </td> 
+<td> 16384 </td> 
+<td> 1 snd_ac97_codec
+ </td> 
+</tr>
+<tr>
+<td> snd_pcm </td> 
+<td> 102400 </td> 
+<td> 2 snd_ac97_codec,snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> vboxvideo </td> 
+<td> 53248 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi_event </td> 
+<td> 16384 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_rawmidi </td> 
+<td> 32768 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_seq </td> 
+<td> 65536 </td> 
+<td> 2 snd_seq_midi_event,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> ttm </td> 
+<td> 98304 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> drm_kms_helper </td> 
+<td> 151552 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> snd_seq_device </td> 
+<td> 16384 </td> 
+<td> 3 snd_seq,snd_rawmidi,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_timer </td> 
+<td> 32768 </td> 
+<td> 2 snd_seq,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> snd </td> 
+<td> 77824 </td> 
+<td> 11 snd_seq,snd_ac97_codec,snd_timer,snd_rawmidi,snd_intel8x0,snd_seq_device,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> drm </td> 
+<td> 352256 </td> 
+<td> 6 vboxvideo,ttm,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> fb_sys_fops </td> 
+<td> 16384 </td> 
+<td> 1 drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> intel_rapl_perf </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> soundcore </td> 
+<td> 16384 </td> 
+<td> 1 snd
+ </td> 
+</tr>
+<tr>
+<td> input_leds </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> syscopyarea </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> sysfillrect </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> serio_raw </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> sysimgblt </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> i2c_piix4 </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxguest </td> 
+<td> 294912 </td> 
+<td> 6 vboxsf,vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> mac_hid </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport_pc </td> 
+<td> 32768 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ppdev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> lp </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport </td> 
+<td> 49152 </td> 
+<td> 3 lp,parport_pc,ppdev
+ </td> 
+</tr>
+<tr>
+<td> autofs4 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> hid_generic </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> usbhid </td> 
+<td> 53248 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> hid </td> 
+<td> 118784 </td> 
+<td> 2 hid_generic,usbhid
+ </td> 
+</tr>
+<tr>
+<td> psmouse </td> 
+<td> 139264 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ahci </td> 
+<td> 36864 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> libahci </td> 
+<td> 32768 </td> 
+<td> 1 ahci
+ </td> 
+</tr>
+<tr>
+<td> e1000 </td> 
+<td> 143360 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> fjes </td> 
+<td> 77824 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> pata_acpi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> video </td> 
+<td> 40960 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> Module </td> 
+<td> Size </td> 
+<td> Used by
+ </td> 
+</tr>
+<tr>
+<td> xt_nat </td> 
+<td> 16384 </td> 
+<td> 6
+ </td>
+</tr>
+<tr>
+<td> xt_tcpudp </td> 
+<td> 16384 </td> 
+<td> 10
+ </td>
+</tr>
+<tr>
+<td> veth </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ipt_MASQUERADE </td> 
+<td> 16384 </td> 
+<td> 5
+ </td>
+</tr>
+<tr>
+<td> nf_nat_masquerade_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 ipt_MASQUERADE
+ </td> 
+</tr>
+<tr>
+<td> xfrm_user </td> 
+<td> 32768 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> xfrm_algo </td> 
+<td> 16384 </td> 
+<td> 1 xfrm_user
+ </td> 
+</tr>
+<tr>
+<td> iptable_nat </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> xt_addrtype </td> 
+<td> 16384 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> iptable_filter </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> ip_tables </td> 
+<td> 24576 </td> 
+<td> 2 iptable_filter,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> xt_conntrack </td> 
+<td> 16384 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> x_tables </td> 
+<td> 36864 </td> 
+<td> 7 xt_nat,ip_tables,iptable_filter,xt_tcpudp,ipt_MASQUERADE,xt_addrtype,xt_conntrack
+ </td> 
+</tr>
+<tr>
+<td> br_netfilter </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> bridge </td> 
+<td> 139264 </td> 
+<td> 1 br_netfilter
+ </td> 
+</tr>
+<tr>
+<td> stp </td> 
+<td> 16384 </td> 
+<td> 1 bridge
+ </td> 
+</tr>
+<tr>
+<td> llc </td> 
+<td> 16384 </td> 
+<td> 2 bridge,stp
+ </td> 
+</tr>
+<tr>
+<td> aufs </td> 
+<td> 241664 </td> 
+<td> 525
+ </td>
+</tr>
+<tr>
+<td> pci_stub </td> 
+<td> 16384 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> vboxpci </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetadp </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxnetflt </td> 
+<td> 28672 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxdrv </td> 
+<td> 458752 </td> 
+<td> 3 vboxnetadp,vboxnetflt,vboxpci
+ </td> 
+</tr>
+<tr>
+<td> openvswitch </td> 
+<td> 114688 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> nf_conntrack_ipv6 </td> 
+<td> 20480 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> nf_nat_ipv6 </td> 
+<td> 16384 </td> 
+<td> 1 openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack_ipv4 </td> 
+<td> 16384 </td> 
+<td> 15
+ </td>
+</tr>
+<tr>
+<td> nf_defrag_ipv4 </td> 
+<td> 16384 </td> 
+<td> 1 nf_conntrack_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_nat_ipv4 </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,iptable_nat
+ </td> 
+</tr>
+<tr>
+<td> nf_defrag_ipv6 </td> 
+<td> 36864 </td> 
+<td> 2 nf_conntrack_ipv6,openvswitch
+ </td> 
+</tr>
+<tr>
+<td> nf_nat </td> 
+<td> 28672 </td> 
+<td> 5 xt_nat,openvswitch,nf_nat_ipv6,nf_nat_masquerade_ipv4,nf_nat_ipv4
+ </td> 
+</tr>
+<tr>
+<td> nf_conntrack </td> 
+<td> 131072 </td> 
+<td> 10 xt_nat,nf_conntrack_ipv6,openvswitch,nf_conntrack_ipv4,ipt_MASQUERADE,nf_nat_ipv6,nf_nat_masquerade_ipv4,xt_conntrack,nf_nat_ipv4,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> libcrc32c </td> 
+<td> 16384 </td> 
+<td> 2 openvswitch,nf_nat
+ </td> 
+</tr>
+<tr>
+<td> vboxsf </td> 
+<td> 49152 </td> 
+<td> 1
+ </td>
+</tr>
+<tr>
+<td> joydev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_intel8x0 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> snd_ac97_codec </td> 
+<td> 131072 </td> 
+<td> 1 snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> ac97_bus </td> 
+<td> 16384 </td> 
+<td> 1 snd_ac97_codec
+ </td> 
+</tr>
+<tr>
+<td> snd_pcm </td> 
+<td> 102400 </td> 
+<td> 2 snd_ac97_codec,snd_intel8x0
+ </td> 
+</tr>
+<tr>
+<td> vboxvideo </td> 
+<td> 53248 </td> 
+<td> 3
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> snd_seq_midi_event </td> 
+<td> 16384 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_rawmidi </td> 
+<td> 32768 </td> 
+<td> 1 snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_seq </td> 
+<td> 65536 </td> 
+<td> 2 snd_seq_midi_event,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> ttm </td> 
+<td> 98304 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> drm_kms_helper </td> 
+<td> 151552 </td> 
+<td> 1 vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> snd_seq_device </td> 
+<td> 16384 </td> 
+<td> 3 snd_seq,snd_rawmidi,snd_seq_midi
+ </td> 
+</tr>
+<tr>
+<td> snd_timer </td> 
+<td> 32768 </td> 
+<td> 2 snd_seq,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> snd </td> 
+<td> 77824 </td> 
+<td> 11 snd_seq,snd_ac97_codec,snd_timer,snd_rawmidi,snd_intel8x0,snd_seq_device,snd_pcm
+ </td> 
+</tr>
+<tr>
+<td> drm </td> 
+<td> 352256 </td> 
+<td> 6 vboxvideo,ttm,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> fb_sys_fops </td> 
+<td> 16384 </td> 
+<td> 1 drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> intel_rapl_perf </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> soundcore </td> 
+<td> 16384 </td> 
+<td> 1 snd
+ </td> 
+</tr>
+<tr>
+<td> input_leds </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> syscopyarea </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> sysfillrect </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> serio_raw </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> sysimgblt </td> 
+<td> 16384 </td> 
+<td> 2 vboxvideo,drm_kms_helper
+ </td> 
+</tr>
+<tr>
+<td> i2c_piix4 </td> 
+<td> 24576 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> vboxguest </td> 
+<td> 294912 </td> 
+<td> 6 vboxsf,vboxvideo
+ </td> 
+</tr>
+<tr>
+<td> mac_hid </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport_pc </td> 
+<td> 32768 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ppdev </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> lp </td> 
+<td> 20480 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> parport </td> 
+<td> 49152 </td> 
+<td> 3 lp,parport_pc,ppdev
+ </td> 
+</tr>
+<tr>
+<td> autofs4 </td> 
+<td> 40960 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> hid_generic </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> usbhid </td> 
+<td> 53248 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> hid </td> 
+<td> 118784 </td> 
+<td> 2 hid_generic,usbhid
+ </td> 
+</tr>
+<tr>
+<td> psmouse </td> 
+<td> 139264 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> ahci </td> 
+<td> 36864 </td> 
+<td> 2
+ </td>
+</tr>
+<tr>
+<td> libahci </td> 
+<td> 32768 </td> 
+<td> 1 ahci
+ </td> 
+</tr>
+<tr>
+<td> e1000 </td> 
+<td> 143360 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> fjes </td> 
+<td> 77824 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> pata_acpi </td> 
+<td> 16384 </td> 
+<td> 0
+ </td>
+</tr>
+<tr>
+<td> video </td> 
+<td> 40960 </td> 
+<td> 0
+ </td>
+</tr>
+</div></div></div></body></html>

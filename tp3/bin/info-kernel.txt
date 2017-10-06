@@ -1,0 +1,9 @@
+------------------------------------------------------
+[DATE & TIME]  04/10/16  21:11:48
+[HOSTNAME] gutitrombotto-VirtualBox
+------------------------------------------------------
+Modelo y Tipo CPU:  Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz( GenuineIntel)
+Version de Kernell:  4.10.0-32-generic  
+Memoria Total del Sistema: 2.500GB 
+Memoria Libre: 94.760KB
+Tiempo transcurrido desde que se inicio el SO: 00D 01:31:35

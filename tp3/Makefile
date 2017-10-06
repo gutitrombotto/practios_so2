@@ -2,7 +2,7 @@ FUENTES=./test.c
 FUENTEST1=./test1.c ./lectura_archivo.c ./funciones_estaciones.c ./funciones_servidor.c ./funciones_socket.c
 
 F_GEN = ./src/funciones_genericas.c ./src/print_html.c ./src/lectura_archivo.c ./src/funciones_estaciones.c
-F_MODULOS=./src/info_modulos.c 
+F_MODULOS=./src/info_modulos.c ./src/funciones_genericas.c
 F_SISTEMA=./src/info_sistema.c 
 F_PRECIPDIA=./src/precipitacion_diaria.c 
 F_PRECIPMEN=./src/precipitacion_mensual.c
@@ -28,11 +28,10 @@ M_PROM=./bin/promedio_variable.cgi
 M_DESC=./bin/descarga-info.cgi
 
 
+all_cgi: sistema precip_dia precip_men promedios modulos
 modulos: $(OBJETOS)
-	gcc $(F_MODULOS) $(CFLAGS) -o $(M_MODULOS) $(OBJETOS)
+	gcc $(F_MODULOS)  $(CFLAGS) -o $(M_MODULOS) $(OBJETOS)
 
-all_cgi: sistema precip_dia precip_men promedios
- 
 sistema: $(OBJETOS)
 	gcc $(F_SISTEMA) $(F_GEN) $(CFLAGS) -o $(M_SISTEMA) $(OBJETOS)
 

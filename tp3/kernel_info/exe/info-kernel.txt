@@ -1,0 +1,16 @@
+  <div class="panel panel-primary"><div class="panel-heading">Datos del Sistema</div><div class="panel-body"> <table class="table"><thead><tr><th> Hostname </th><th> Fecha y Hora </th></tr></thead><tbody><tr>
+<td> gutitrombotto-VirtualBox
+ </td> 
+<td>   05/10/16  16:35:36 </td> 
+</tr>
+</tbody></table></div></div>  <div class="panel panel-primary"><div class="panel-heading">Informacion del Kernel</div><div class="panel-body"> <table class="table"><thead><tr><th> Modelo y Tipo CPU </th><th> Version de Kernel </th></tr></thead><tbody><tr>
+<td>  Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz  GenuineIntel </td> 
+<td>  4.10.0-32-generic  </td> 
+</tr>
+</tbody></table></div></div>  <div class="panel panel-primary"><div class="panel-heading">Informacion de la Memoria</div><div class="panel-body"> <table class="table"><thead><tr><th> Memoria Total del Sistema </th><th> Memoria Libre </th></tr></thead><tbody><tr>
+<td> 2.500G </td> 
+<tr>
+<td> 87.376K </td> 
+</tbody></table></div></div>  <div class="panel panel-primary"><div class="panel-heading">Uptime</div><div class="panel-body"> <table class="table"><thead><tr><th> Tiempo transcurrido desde que se inicio el SO </th></tr></thead><tbody><td> 00D 00:49:41 </td> 
+</tr>
+</tbody></table></div></div>

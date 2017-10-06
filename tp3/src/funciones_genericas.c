@@ -4,7 +4,7 @@
 /*! \def TOKEN_DELIM
     \brief Delimitadores de la linea de comandos
 */
-#define TOKEN_DELIM "="
+#define TOKEN_DELIM "= "
 
 /*! \def TOKEN_BUFSIZE
     \brief Tamaño maximo del buffer para palabras de consola
@@ -89,4 +89,30 @@ int eleccion_funcion(char * funcion_elegida)
   else if (!strcmp(funcion_elegida,"descargar")) return 5;
   else if (!strcmp(funcion_elegida,"desconectar")) return 6;
   else return 0;
+}
+
+
+void print_file(char *nombre_archivo)
+{
+  FILE *fp;
+  char *line = NULL;
+  size_t len = 0;
+  ssize_t nread;
+
+  fp = fopen(nombre_archivo, "r");
+
+
+
+  if ( fp == NULL )
+  {
+    printf ( "Error opening file on GF!\n" );
+    exit ( 1 );
+  }
+  while((nread = getline(&line, &len, fp))!= -1)
+  {
+    printf("%s\n", line);
+  }
+
+  return;
+
 }

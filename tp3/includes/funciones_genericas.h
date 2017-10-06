@@ -11,6 +11,7 @@
 char ** split_line(char * line);
 void enviar_respuesta(int num_funcion);
 int eleccion_funcion(char * funcion_elegida);
+void print_file(char *nombre_archivo);
 
 
 
