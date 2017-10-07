@@ -108,7 +108,7 @@ int main( int argc, char *argv[] ) {
 	while (getline(&line, &len, fp))
 	{
 		if (!lineas_innecesarias)    break;
-		lineas_innecesarias --;
+		lineas_innecesarias = lineas_innecesarias - 1;
 	}
 
 
@@ -117,6 +117,20 @@ int main( int argc, char *argv[] ) {
 	cargar_navbar_to_file(f);
 	fprintf(f, "%s", "<div class=\"container-fluid\">");
 	fprintf(f, "%s", "<div class=\"row\">");
+	fprintf(f, "%s", "<div class=\"col-md-10 col-md-offset-1\">");
+	fprintf(f, "%s", "<h4> ¿Deseas subir un modulo de Kernel? &nbsp; &nbsp; <a class=\"btn btn-default\" href=\"/tp3/cgi/subir-modulo.cgi\"> Subir Modulo </a> </h4>");
+	fprintf(f,"%s","</div>");
+	fprintf(f,"%s","</div>");
+	fprintf(f,"%s","</br>");
+
+
+
+
+
+	//fprintf(f, "%s", "<div class=\"col-md-10\" style=\"margin-left: 30px;\" ");
+
+	fprintf(f, "%s", "<div class=\"row\">");
+
 	fprintf(f, "%s", "<div class=\"col-md-10 col-md-offset-1\">");
 	print_cte_to_file(inicio_table,f);
 

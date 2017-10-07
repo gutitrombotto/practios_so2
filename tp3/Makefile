@@ -8,17 +8,15 @@ F_PRECIPDIA=./src/precipitacion_diaria.c
 F_PRECIPMEN=./src/precipitacion_mensual.c
 F_PROM=./src/promedio_variable.c 
 F_DESCARGA=./src/descarga-info.c 
+F_SUBIDA=./src/subir-modulo.c 
+
+
 CFLAGS=-I./includes -Wall -pedantic
 #CFLAGS=-Wall -pedantic
 
 #INCLUDES=-I../includes
 
 #OBJETOS=$(SRCS:.c=.o)
-FUENTEs_CLI=./cliente.c ./funciones_socket.c ./funciones_cliente.c
-
-MAIN=./test.cgi
-MAIN_CLI=./cliente
-
 
 M_MODULOS=./bin/modulos.cgi
 M_SISTEMA=./bin/sistema.cgi
@@ -26,6 +24,7 @@ M_PRECIPDIA=./bin/precipitacion_diaria.cgi
 M_PRECIPMEN=./bin/precipitacion_mensual.cgi
 M_PROM=./bin/promedio_variable.cgi
 M_DESC=./bin/descarga-info.cgi
+M_SUB=./bin/subir-modulo.cgi
 
 
 all_cgi: sistema precip_dia precip_men promedios modulos
@@ -47,6 +46,10 @@ promedios: $(OBJETOS)
 
 descarga: $(OBJETOS)
 	gcc $(F_DESCARGA) $(F_GEN) $(CFLAGS) -o $(M_DESC) $(OBJETOS)
+
+
+subida: $(OBJETOS)
+	gcc $(F_SUBIDA) $(F_GEN) $(CFLAGS) -o $(M_SUB) $(OBJETOS)
 
 cppcheck:
 	cppcheck --enable=all --inconclusive --std=posix ../tp3 
