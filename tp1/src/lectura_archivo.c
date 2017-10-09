@@ -22,7 +22,7 @@ struct Estacion_Meteorologica * get_station ( unsigned int id_estacion,
     strcpy ( estaciones[num_estaciones].nombre, ( const char * ) nombre_estacion );
     estaciones[num_estaciones].contador_datos = 0;
     num_estaciones = num_estaciones + 1;
-    printf ( "%s :  %s\n", "NUEVA ESTACION", estaciones[num_estaciones - 1].nombre );
+    //printf ( "%s :  %s\n", "NUEVA ESTACION", estaciones[num_estaciones - 1].nombre );
     return &estaciones[num_estaciones - 1];
 }
 

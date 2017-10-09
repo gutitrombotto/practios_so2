@@ -23,10 +23,10 @@ void listar()
 			fprintf ( f, "-----------------------------------------------------------\n" );
 			printf ( "ESTACION:%s, ID: %u\n", estaciones[i].nombre,
 			         estaciones[i].estacion_id );
-			printf ( "SENSORES CON DATOS \n" );
+			printf ( "Sensores Disponibles \n" );
 			fprintf ( f, "ESTACION:%s, ID: %u\n", estaciones[i].nombre,
 			          estaciones[i].estacion_id );
-			fprintf ( f, "SENSORES CON DATOS \n" );
+			fprintf ( f, "Sensores Disponibles \n" );
 			fprintf ( f, "-----------------------------------------------------------\n" );
 			data = estaciones[i].buffer[0];
 			char buf[255];
@@ -34,30 +34,30 @@ void listar()
 
 			for ( int j = 4; j < 12; ++j )
 				{
-					printf ( "[%s] %s  \n", index[j], "HAY DATOS" );
-					fprintf ( f, "[%s] %s  \n", index[j], "HAY DATOS" );
+					printf ( "%s:  %s  \n", index[j], "HAY DATOS" );
+					fprintf ( f, "%s:  %s  \n", index[j], "HAY DATOS" );
 				}
 
 			if ( data.rad_solar == -1 )
 				{
-					printf ( "[%s] %s  \n", index[12], "NO HAY DATOS" );
-					fprintf ( f, "[%s] %s  \n", index[12], "NO HAY DATOS" );
+					printf ( "%s:  %s  \n", index[12], "NO HAY DATOS" );
+					fprintf ( f, "%s:  %s  \n", index[12], "NO HAY DATOS" );
 				}
 			else
 				{
-					printf ( "[%s] %s  \n", index[12], "HAY DATOS" );
-					fprintf ( f, "[%s] %s  \n", index[12], "HAY DATOS" );
+					printf ( "%s:  %s  \n", index[12], "HAY DATOS" );
+					fprintf ( f, "%s:  %s  \n", index[12], "HAY DATOS" );
 				}
 
 			if ( data.temp_suelo == -1 )
 				{
-					printf ( "[%s] %s  \n", index[13], "NO HAY DATOS" );
-					fprintf ( f, "[%s] %s  \n", index[13], "NO HAY DATOS" );
+					printf ( "%s:  %s  \n", index[13], "NO HAY DATOS" );
+					fprintf ( f, "%s:  %s  \n", index[13], "NO HAY DATOS" );
 				}
 			else
 				{
-					printf ( "[%s] %s  \n", index[13], "HAY DATOS" );
-					fprintf ( f, "[%s] %s  \n", index[13], "HAY DATOS" );
+					printf ( "%s:  %s  \n", index[13], "HAY DATOS" );
+					fprintf ( f, "%s:  %s  \n", index[13], "HAY DATOS" );
 				}
 			fprintf ( f, "\n" );
 			printf("\n");
@@ -77,7 +77,7 @@ void promedio_variable ( char * variable )
 		}
 	else
 		{
-			fprintf ( fp, "PROMEDIOS DE LA VARIABLE %s \n \n", variable);
+			fprintf ( fp, "Promedios de la Variable:   %s \n \n", variable);
 
 			float acumulador = 0, contador = 0;
 
@@ -105,8 +105,8 @@ void promedio_variable ( char * variable )
 							contador = contador + 1;
 						}
 
-					if ( acumulador >= 0 ) { fprintf ( fp, "PROMEDIO %s --> %f \n", estaciones[i].nombre, acumulador / contador ); } //promedio[i] = acumulador /contador;
-					else {fprintf ( fp, "ESTACION %s SIN DATOS \n", estaciones[i].nombre);}
+					if ( acumulador >= 0 ) { fprintf ( fp, "Estacion %s:   %.3f \n", estaciones[i].nombre, acumulador / contador ); } //promedio[i] = acumulador /contador;
+					else {fprintf ( fp, "Estacion %s SIN DATOS \n", estaciones[i].nombre);}
 					acumulador = 0;
 					contador = 0;
 				}
@@ -151,22 +151,22 @@ void mensual_precipitacion ( unsigned int id_estacion )
 						{
 							if (acumulador == 0)
 							{
-								fprintf ( f, "PRECIPITACIONES MES %i - %s: %s \n", mes_actual, meses[j],"NO HAY INFORMACION" );
+								fprintf ( f, "Precipitacion del Mes %i - %s: %s \n", mes_actual, meses[j],"NO HAY INFORMACION" );
 							} else {
-								fprintf ( f, "PRECIPITACIONES MES %i - %s --> %f \n", mes_actual, meses[j], acumulador );
+								fprintf ( f, "Precipitacion del Mes %i - %s :   %.3f \n", mes_actual, meses[j], acumulador );
 								mes_actual = j;
 								acumulador = station.buffer[i].precip;
 							}
 						}
 				}
 
-			fprintf ( f, "PRECIPITACIONES MES %i - %s --> %f \n", mes_actual, meses[mes_actual], acumulador );
+			fprintf ( f, "Precipitacion del Mes %i - %s:  %.3f \n", mes_actual, meses[mes_actual], acumulador );
 
-			//fprintf ( f, "PRECIPITACIONES MES %i --> %f \n", mes_actual, acumulador );
+			//fprintf ( f, "Precipitacion del Mes %i :   %.3f \n", mes_actual, acumulador );
 			fclose ( f );
 		}
 
-	//printf("MES %f\n", precip_mensual[1]);
+	//printf("MES %.3f\n", precip_mensual[1]);
 }
 
 void diario_precipitacion ( unsigned int id_estacion )
@@ -199,13 +199,13 @@ void diario_precipitacion ( unsigned int id_estacion )
 					if ( j == dia_actual ) { acumulador = acumulador + station.buffer[i].precip; }
 					else
 						{
-							fprintf ( f, "PRECIPITACIONES DIA %i --> %f \n", dia_actual, acumulador );
+							fprintf ( f, "Precipitacion del Dia %i:   %.3f \n", dia_actual, acumulador );
 							dia_actual = j;
 							acumulador = station.buffer[i].precip;
 						}
 				}
 
-			fprintf ( f, "PRECIPITACIONES DIA %i --> %f \n", dia_actual, acumulador );
+			fprintf ( f, "Precipitacion del Dia %i:   %.3f \n", dia_actual, acumulador );
 			fclose ( f );
 		}
 }

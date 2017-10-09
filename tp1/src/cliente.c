@@ -8,7 +8,7 @@ int main ( int argc, char* argv[] )
 	int sockfd, puerto, n, socket_udp;
 	struct sockaddr_in serv_addr;
 	struct hostent* server;
-	int terminar = 0, status = 1, validar_usuario=1, validar_pw=1, eleccion_funcion=1, tamano_direccion;
+	int terminar = 0, status = 1, validar_usuario=1, validar_pw=1,tamano_direccion;
 	char* line = NULL;
 	size_t bufsize = 0; // have getline allocate a buffer for us
 	ssize_t nread;
@@ -25,25 +25,14 @@ int main ( int argc, char* argv[] )
 		nread = getline ( &line, &bufsize, stdin );
 		if (nread == -1) printf("Error en la Lectura de la terminal\n");
 		linea_parseada = split_line(line);
-		/*for (int i=0; linea_parseada[i]!=NULL; i++) 
-		{
-		//if (!strncmp(args[i][0],"|",1))
-			printf("%s\n", linea_parseada[i]);
 
-		}
-		for (int i=0; datos_coneccion[i]!=NULL; i++) 
-		{
-		//if (!strncmp(args[i][0],"|",1))
-			printf("%s\n", datos_coneccion[i]);
-
-		}*/
 		if (test_linea_parseada(linea_parseada, datos_coneccion))
 		{
-			printf("%s\n", "Mal para conectarse");
+			printf("%s\n", "Algo esta mal al conectarse con el servidor...");
 			status = 1;
 		}
 		else {
-			printf("%s\n", "Todo bien para conectarse");
+			printf("%s\n", "Listo para conectarse con el servidor...");
 			status = 0;
 		}
 	}
@@ -77,13 +66,7 @@ int main ( int argc, char* argv[] )
 		// serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serv_addr.sin_port = htons( puerto );
 
-	/*if ( connect( sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr ) ) < 0 ) {
-		perror( "conexion" );
-		exit( 1 );
-	}*/
-
 	/*FIN SOCKET TCP */
-
 
 
 	/* SOCKET UDP*/
@@ -156,7 +139,7 @@ int main ( int argc, char* argv[] )
 	//printf("%s\n", "Elija alguna de las opciones del servidor");
 
 	
-	while(eleccion_funcion)
+	while(1)
 	{
 		printf("%s\n", "En eleccion_funcion");
 		if (terminar)
@@ -179,14 +162,17 @@ int main ( int argc, char* argv[] )
 		while(strcmp(buffer,"***") != 0)
 		{
 			leer_socket(sockfd, buffer);
+			if (!strcmp(buffer,"***")) break;
 			if (!strcmp(buffer, "descargo_udp"))
 			{
 				printf("%s\n", "Estoy en descargo udp");
 					//tamano_direccion = sizeof ( serv_addr );
 					//socklen_t slen = sizeof serv_addr;
-				printf( "Ingrese el mensaje a transmitir: " );
+				printf( "Iniciando transmision..." );
 				memset( buffer, 0, TAM );
-				fgets( buffer, TAM, stdin );
+				strcpy ( buffer, ( const char * ) "dale" );
+
+				//fgets( buffer, TAM, stdin );
 
 				n = sendto( socket_udp, (void *)buffer, TAM, 0, (struct sockaddr *)&serv_addr, tamano_direccion );
 				if ( n < 0 ) {
@@ -244,8 +230,6 @@ int main ( int argc, char* argv[] )
 
 
 	}
-
-	
 	
 	exit(EXIT_SUCCESS);
 }

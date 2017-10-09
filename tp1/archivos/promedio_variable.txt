@@ -1,7 +1,7 @@
-PROMEDIOS DE LA VARIABLE Temperatura 
+Promedios de la Variable:   Temperatura 
  
-PROMEDIO Yacanto Norte - E01 --> 20.545931 
-PROMEDIO MagyaCba 60 cuadras --> 22.992723 
-PROMEDIO MagyaCba La Cumbrecita --> 18.993597 
-PROMEDIO Cerro Obero - Capilla del Monte --> 15.213078 
-PROMEDIO Magyacba Oliva --> 23.769184 
+Estacion Yacanto Norte - E01:   20.546 
+Estacion MagyaCba 60 cuadras:   22.993 
+Estacion MagyaCba La Cumbrecita:   18.994 
+Estacion Cerro Obero - Capilla del Monte:   15.213 
+Estacion Magyacba Oliva:   23.769 

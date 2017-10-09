@@ -125,8 +125,8 @@ void enviar_funciones_servidor(int newsockfd, const char * funciones_servidor[])
 int eleccion_funcion(char ** buffer_parseado, const char ** funciones_servidor)
 {
   if (!strcmp(buffer_parseado[0],"listar")) return 1;
-  else if (!strcmp(buffer_parseado[0],"mensual_precip")) return 2;
-  else if (!strcmp(buffer_parseado[0],"diario_precip")) return 3;
+  else if (!strcmp(buffer_parseado[0],"mensual_precipitacion")) return 2;
+  else if (!strcmp(buffer_parseado[0],"diario_precipitacion")) return 3;
   else if (!strcmp(buffer_parseado[0],"promedio")) return 4;
   else if (!strcmp(buffer_parseado[0],"descargar")) return 5;
   else if (!strcmp(buffer_parseado[0],"desconectar")) return 6;
