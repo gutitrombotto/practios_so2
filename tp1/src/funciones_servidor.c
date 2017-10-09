@@ -50,7 +50,7 @@ char ** split_line(char * line){
 
 int inicializar_servidor_tcp(int sockfd, struct sockaddr_in* serv_addr, int port)
 {
-  printf("INICIANDO TCP\n");
+  //printf("INICIANDO TCP\n");
   sockfd = socket( AF_INET, SOCK_STREAM, 0);
   if ( sockfd < 0 ) { 
     perror( " apertura de socket ");
@@ -96,7 +96,7 @@ int inicializar_servidor_udp(int socket_udp, struct sockaddr_in* serv_addr, int 
     exit( 1 );
   }
 
-  printf( "Socket disponible (UDP): %d\n", ntohs(serv_addr->sin_port) );
+  printf( "Socket (UDP) disponible : %d\n", ntohs(serv_addr->sin_port) );
 
   return socket_udp;
 

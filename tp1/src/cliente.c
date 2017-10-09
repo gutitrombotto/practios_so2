@@ -165,7 +165,7 @@ int main ( int argc, char* argv[] )
 			if (!strcmp(buffer,"***")) break;
 			if (!strcmp(buffer, "descargo_udp"))
 			{
-				printf("%s\n", "Estoy en descargo udp");
+				//printf("%s\n", "Estoy en descargo udp");
 					//tamano_direccion = sizeof ( serv_addr );
 					//socklen_t slen = sizeof serv_addr;
 				printf( "Iniciando transmision..." );
@@ -188,7 +188,7 @@ int main ( int argc, char* argv[] )
 						exit( 1 );
 					}*/
 
-				FILE *fp = fopen ( "descargar.txt", "w" );
+				FILE *fp = fopen ( "../archivos/descarga_udp.txt", "w" );
 
 				if ( fp == NULL )
 				{

@@ -168,7 +168,7 @@ void cargar_archivo(){
 
     while (getline(&line, &len, fp)) {
         if (!lineas_innecesarias)    break;
-        lineas_innecesarias --;
+        lineas_innecesarias =  lineas_innecesarias -1;
     }
     while((nread = getline(&line, &len, fp))!= -1){
     

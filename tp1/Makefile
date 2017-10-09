@@ -4,7 +4,7 @@ CFLAGS=-I../includes -Wall -pedantic
 
 INCLUDES=-I../includes
 
-#OBJETOS=$(SRCS:.c=.o)
+OBJETOS=$(SRCS:.c=.o)
 FUENTES_SV=./src/servidor.c ./src/lectura_archivo.c ./src/funciones_estaciones.c ./src/funciones_servidor.c ./src/funciones_socket.c
 FUENTEs_CLI=./src/cliente.c ./src/funciones_socket.c ./src/funciones_cliente.c
 
