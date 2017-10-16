@@ -81,7 +81,7 @@ void promedio_variable ( char * variable )
 
 			float acumulador = 0, contador = 0;
 
-			for ( int i = 0; i < num_estaciones; ++i )
+			for ( int i = 0; i < num_estaciones; i = i + 1 )
 				{
 					for ( int j = 0; j < estaciones[i].contador_datos; j = j + 1 )
 						{
@@ -142,7 +142,7 @@ void mensual_precipitacion ( unsigned int id_estacion )
 			float acumulador = 0;
 			mes_actual = station.buffer[0].fecha.tm_mon;
 
-			for ( int i = 0; i < station.contador_datos; ++i )
+			for ( int i = 0; i < station.contador_datos; i = i + 1 )
 				{
 					int j = station.buffer[i].fecha.tm_mon;
 
@@ -192,7 +192,7 @@ void diario_precipitacion ( unsigned int id_estacion )
 			float acumulador = 0;
 			dia_actual = station.buffer[0].fecha.tm_mday;
 
-			for ( int i = 0; i < station.contador_datos; ++i )
+			for ( int i = 0; i < station.contador_datos; i = i + 1 )
 				{
 					int j = station.buffer[i].fecha.tm_mday;
 
@@ -227,7 +227,7 @@ void descargar ( int id_estacion )
 	{
 		fprintf ( fp, "DATOS DE LA ESTACION %s \n \n", station.nombre);
 
-		for ( int i = 0; i < station.contador_datos; ++i )
+		for ( int i = 0; i < station.contador_datos; i = i + 1 )
 		{
 			char buf[255];
 			strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &station.buffer[i].fecha );
