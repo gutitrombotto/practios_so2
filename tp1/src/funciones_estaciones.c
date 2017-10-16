@@ -32,7 +32,7 @@ void listar()
 			char buf[255];
 			strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &data.fecha );
 
-			for ( int j = 4; j < 12; ++j )
+			for ( int j = 4; j < 12; j = j + 1 )
 				{
 					printf ( "%s:  %s  \n", index[j], "HAY DATOS" );
 					fprintf ( f, "%s:  %s  \n", index[j], "HAY DATOS" );
@@ -83,7 +83,7 @@ void promedio_variable ( char * variable )
 
 			for ( int i = 0; i < num_estaciones; ++i )
 				{
-					for ( int j = 0; j < estaciones[i].contador_datos; ++j )
+					for ( int j = 0; j < estaciones[i].contador_datos; j = j + 1 )
 						{
 							if ( strcmp ( variable, "Temperatura" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].temp; }
 							else if ( strcmp ( variable, "Humedad" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].hum; }
