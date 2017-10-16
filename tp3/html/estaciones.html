@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>Sistemas Operativos II</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-inverse navbar-default navbar-static-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Mostrar Menú</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Trabajo Practico 3: Sistemas Operativos II</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/tp3/index.html">Inicio</a></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/tp3/cgi/sistema.cgi">Info Sistema</a></li>
+            <li><a href="/tp3/html/estaciones.html">Estaciones Meteorologicas</a></li>
+            <li><a href="/tp3/cgi/modulos.cgi">Drivers</a></li>
+            <li><a href="#">Agustin Trombotto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-9">
+              <h3>Listado de Estaciones Meteorologicas</h3>
+
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <table class="table table-condensed">
+                      <thead>
+                        <tr>
+                          <th width="250px" >Identificacion</th>
+                          <th width="250px" >Nombre</th>
+                          <th >Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr>
+                          <td> 30135 </td>
+                          <td>Yacanto Norte</td>
+                          <td>
+                            <div class="col-md-5">
+                              <a href="/tp3/cgi/precipitacion_mensual.cgi?id=30135" class="btn btn-default">
+                                <i class="fa fa-tint"></i>
+                              </a>
+                              <a href="/tp3/cgi/precipitacion_diaria.cgi?id=30135" class="btn btn-info">
+                                <i class="fa fa-shower"></i>
+                              </a>
+
+                              <a href="/tp3/cgi/descarga-info.cgi?id=30135" class="btn btn-warning">
+                                <i class="fa fa-download"></i>
+                              </a>
+                              
+                            </div>
+                            <div class="col-md-3">
+                              <div class="dropdown ">
+                                <button class="btn btn-danger dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  <i class="fa fa-percent"> Variables </i>
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura">Temperatura</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad">Humedad</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Punto-de-Rocio">Punto de Rocío</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Precipitacion">Precipitación</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Velocidad-Viento">Velocidad Viento</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Rafaga-Maxima">Ráfaga Máxima</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Presion">Presión</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Radiacion-Solar">Radiación Solar</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura-Suelo">Temperatura Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Suelo">Humedad Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Hoja">Humedad Hoja</a></li>      
+                               </ul>
+                             </div>
+                           </div>
+                            <!-- <a href="/tp3/cgi/promedio_variable.cgi" class="btn btn-danger">
+                              <i class="fa fa-percent"></i>
+                            </a> -->
+                            <!-- Example single danger button -->
+
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                          <td> 30057 </td>
+                          <td>Magyacba 60 cuadras</td>
+                          <td>
+                            <div class="col-md-5">
+
+                              <a href="/tp3/cgi/precipitacion_mensual.cgi?id=30057" class="btn btn-default">
+                                <i class="fa fa-tint"></i>
+                              </a>
+                              <a href="/tp3/cgi/precipitacion_diaria.cgi?id=30057" class="btn btn-info">
+                                <i class="fa fa-shower"></i>
+                              </a>
+
+                              <a href="/tp3/cgi/descarga-info.cgi?id=30057" class="btn btn-warning">
+                                <i class="fa fa-download"></i>
+                              </a>
+                            </div>
+                            <!-- <a href="/tp3/cgi/promedio_variable.cgi" class="btn btn-danger">
+                              <i class="fa fa-percent"></i>
+                            </a> -->
+                            <div class="col-md-3">
+                              <div class="dropdown ">
+                                <button class="btn btn-danger dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  <i class="fa fa-percent"> Variables </i>
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura">Temperatura</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad">Humedad</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Punto-de-Rocio">Punto de Rocío</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Precipitacion">Precipitación</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Velocidad-Viento">Velocidad Viento</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Rafaga-Maxima">Ráfaga Máxima</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Presion">Presión</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Radiacion-Solar">Radiación Solar</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura-Suelo">Temperatura Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Suelo">Humedad Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Hoja">Humedad Hoja</a></li>     
+                                </ul>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td> 30099 </td>
+                          <td>Cerro Obero</td>
+                          <td>
+                            <div class="col-md-5">
+
+                              <a href="/tp3/cgi/precipitacion_mensual.cgi?id=30099" class="btn btn-default">
+                                <i class="fa fa-tint"></i>
+                              </a>
+                              <a href="/tp3/cgi/precipitacion_diaria.cgi?id=30099" class="btn btn-info">
+                                <i class="fa fa-shower"></i>
+                              </a>
+
+                              <a href="/tp3/cgi/descarga-info.cgi?id=30099" class="btn btn-warning">
+                                <i class="fa fa-download"></i>
+                              </a>
+                            </div>
+                            <!-- <a href="/tp3/cgi/promedio_variable.cgi" class="btn btn-danger">
+                              <i class="fa fa-percent"></i>
+                            </a> -->
+                            <div class="col-md-3">
+                              <div class="dropdown ">
+                                <button class="btn btn-danger dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  <i class="fa fa-percent"> Variables </i>
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                  <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura">Temperatura</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad">Humedad</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Punto-de-Rocio">Punto de Rocío</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Precipitacion">Precipitación</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Velocidad-Viento">Velocidad Viento</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Rafaga-Maxima">Ráfaga Máxima</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Presion">Presión</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Radiacion-Solar">Radiación Solar</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura-Suelo">Temperatura Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Suelo">Humedad Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Hoja">Humedad Hoja</a></li>      
+                                </ul>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td> 30069 </td>
+                          <td>Magyacba Oliva</td>
+                          <td>
+                            <div class="col-md-5">
+
+                              <a href="/tp3/cgi/precipitacion_mensual.cgi?id=30069" class="btn btn-default">
+                                <i class="fa fa-tint"></i>
+                              </a>
+                              <a href="/tp3/cgi/precipitacion_diaria.cgi?id=30069" class="btn btn-info">
+                                <i class="fa fa-shower"></i>
+                              </a>
+
+                              <a href="/tp3/cgi/descarga-info.cgi?id=30069" class="btn btn-warning">
+                                <i class="fa fa-download"></i>
+                              </a>
+                            </div>
+                            <!-- <a href="/tp3/cgi/promedio_variable.cgi" class="btn btn-danger">
+                              <i class="fa fa-percent"></i>
+                            </a> -->
+                            <div class="col-md-3">
+                              <div class="dropdown ">
+                                <button class="btn btn-danger dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                  <i class="fa fa-percent"> Variables </i>
+                                  <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura">Temperatura</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad">Humedad</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Punto-de-Rocio">Punto de Rocío</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Precipitacion">Precipitación</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Velocidad-Viento">Velocidad Viento</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Rafaga-Maxima">Ráfaga Máxima</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Presion">Presión</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Radiacion-Solar">Radiación Solar</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Temperatura-Suelo">Temperatura Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Suelo">Humedad Suelo</a></li>
+                                 <li><a href="/tp3/cgi/promedio_variable.cgi?var=Humedad-Hoja">Humedad Hoja</a></li>        
+                               </ul>
+                             </div>
+                           </div>
+                         </td>
+                       </tr>
+
+                     </tbody>
+                   </table>
+                 </div>
+               </div>
+               <div class="row text-center">
+                <div class="col-xs-12">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-3">
+            <h3>Acciones disponibles</h3>
+            <ul class="list-group">
+              <li class="list-group-item"> <i class="fa fa-tint" aria-hidden="true"></i>
+              &nbsp &nbsp Precipitacion Mensual</li>
+              <li class="list-group-item"> <i class="fa fa-shower" aria-hidden="true"></i>
+              &nbsp &nbsp Precipitacion Diaria</li>
+              <li class="list-group-item"> <i class="fa fa-download" aria-hidden="true"></i>
+              &nbsp &nbsp Descargar Informacion</li>
+              <li class="list-group-item"> <i class="fa fa-percent" aria-hidden="true"></i>
+              &nbsp &nbsp Promedio de Variables</li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+      <script src=" https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+
+
+
+    </body>
+    </html>

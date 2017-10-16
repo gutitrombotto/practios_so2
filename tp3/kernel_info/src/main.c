@@ -27,14 +27,14 @@ int main (int argc, char ** argv){
   int opt;
   int rep = 0;
 
-  FILE *f = fopen ( "./info-kernel.txt", "w" );
+  FILE *f = fopen ( "../archivos/info-kernel.txt", "w" );
   if ( f == NULL )
   {
     printf ( "Error opening file!\n" );
     exit ( 1 );
   }
   print_header(f);
-  print_model_type(f);  
+  print_model_type(f);
   print_kernel_version(f);
   print_meminfo(f);
   print_uptime(f);

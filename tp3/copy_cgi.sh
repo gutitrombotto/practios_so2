@@ -1,3 +1,2 @@
 #!/bin/bash
-
-sudo cp ./bin/* /var/www/html/tp3/cgi/.
+sudo cp -r bin/* /var/www/html/tp3/cgi/

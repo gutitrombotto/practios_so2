@@ -16,7 +16,8 @@ double proc_uptime (const char * buffer){
 
 void proc_model_type(const char * buffer, struct CPU * cpu){        //SEPARAR!!!//
   cpu->model = string_parse(buffer,(char*)"model name",':');
-  cpu->type = string_parse(buffer,(char*)"vendor_id",' ');
+ // cpu->type = string_parse(buffer,(char*)"vendor_id",' ');
+	cpu->type = NULL;
 }
 
 double proc_init_time(const char * buffer){

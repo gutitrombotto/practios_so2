@@ -9,7 +9,7 @@ F_PRECIPMEN=./src/precipitacion_mensual.c
 F_PROM=./src/promedio_variable.c 
 F_DESCARGA=./src/descarga-info.c 
 F_SUBIDA=./src/subir-modulo.c 
-
+CC = gcc -std=gnu11
 
 CFLAGS=-I./includes -Wall -pedantic
 #CFLAGS=-Wall -pedantic
@@ -28,24 +28,25 @@ M_SUB=./bin/subir-modulo.cgi
 
 
 all_cgi: sistema precip_dia precip_men promedios modulos
+
 modulos: $(OBJETOS)
-	gcc $(F_MODULOS)  $(CFLAGS) -o $(M_MODULOS) $(OBJETOS)
+	$(CC) $(F_MODULOS)  $(CFLAGS) -o $(M_MODULOS) $(OBJETOS)
 
 sistema: $(OBJETOS)
-	gcc $(F_SISTEMA) $(F_GEN) $(CFLAGS) -o $(M_SISTEMA) $(OBJETOS)
+	$(CC) $(F_SISTEMA) $(F_GEN) $(CFLAGS) -o $(M_SISTEMA) $(OBJETOS)
 
 precip_dia: $(OBJETOS)
-	gcc $(F_PRECIPDIA) $(F_GEN) $(CFLAGS) -o $(M_PRECIPDIA) $(OBJETOS)
+	$(CC) $(F_PRECIPDIA) $(F_GEN) $(CFLAGS) -o $(M_PRECIPDIA) $(OBJETOS)
 
 precip_men: $(OBJETOS)
-	gcc $(F_PRECIPMEN) $(F_GEN) $(CFLAGS) -o $(M_PRECIPMEN) $(OBJETOS)
+	$(CC) $(F_PRECIPMEN) $(F_GEN) $(CFLAGS) -o $(M_PRECIPMEN) $(OBJETOS)
 
 promedios: $(OBJETOS)
-	gcc $(F_PROM) $(F_GEN) $(CFLAGS) -o $(M_PROM) $(OBJETOS)
+	$(CC) $(F_PROM) $(F_GEN) $(CFLAGS) -o $(M_PROM) $(OBJETOS)
 
 
 descarga: $(OBJETOS)
-	gcc $(F_DESCARGA) $(F_GEN) $(CFLAGS) -o $(M_DESC) $(OBJETOS)
+	$(CC) $(F_DESCARGA) $(F_GEN) $(CFLAGS) -o $(M_DESC) $(OBJETOS)
 
 
 subida: $(OBJETOS)
@@ -54,6 +55,16 @@ subida: $(OBJETOS)
 cppcheck:
 	cppcheck --enable=all --inconclusive --std=posix ../tp3 
 
+copy_index:
+	sudo cp index.html /var/www/html/tp3/
 
+copy_files:
+	sudo cp -R archivos/ /var/www/html/tp3/archivos/
+copy_ksamp:
+	sudo cp ./kernel_info/exe/ksamp /var/www/html/tp3/cgi/
+copy_shell_scripts:
+	sudo cp *.sh /var/www/html/tp3/
+copy_vista_estaciones:
+	sudo cp ./html/estaciones.html /var/www/html/tp3/html/
 clean:
 	$(RM) $(OBJETOS) $(MAIN)

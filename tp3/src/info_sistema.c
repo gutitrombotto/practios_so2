@@ -9,7 +9,7 @@
 int main( int argc, char *argv[] ) {
 	system("./ksamp");
 
-char * nombre_archivo = "./info-kernel.txt";
+char * nombre_archivo = "../archivos/info-kernel.txt";
 printf ( "%s%c%c\n", "Content-Type:text/html;charset=iso-8859-1", 13, 10 );
 
 cargar_header();

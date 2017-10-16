@@ -52,7 +52,7 @@ const char * table_promedio_header[] = {
 
 void print_table_header(FILE *f)
 {
-	for (int i = 0; table_header[i] != NULL ; ++i)
+	for (int i = 0; table_header[i] != NULL ; i = i +1)
 	{
 		fprintf ( f, "%s", table_header[i] );
 	}
@@ -61,7 +61,7 @@ void print_table_header(FILE *f)
 
 void print_table_mes_header(FILE *f)
 {
-	for (int i = 0; table_mensual_header[i] != NULL ; ++i)
+	for (int i = 0; table_mensual_header[i] != NULL ; i = i + 1)
 	{
 		fprintf ( f, "%s", table_mensual_header[i] );
 	}
@@ -70,7 +70,7 @@ void print_table_mes_header(FILE *f)
 
 void print_table_promedio_header(FILE *f)
 {
-	for (int i = 0; table_promedio_header[i] != NULL ; ++i)
+	for (int i = 0; table_promedio_header[i] != NULL ; i = i + 1)
 	{
 		fprintf ( f, "%s", table_promedio_header[i] );
 	}
@@ -106,7 +106,7 @@ for ( int i = 0; i < num_estaciones; i = i + 1 )
 	char buf[255];
 	strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &data.fecha );
 
-	for ( int j = 4; j < 12; ++j )
+	for ( int j = 4; j < 12; j = j + 1 )
 	{
 		printf ( "[%s] %s  \n", index[j], "HAY DATOS" );
 		fprintf ( f, "[%s] %s  \n", index[j], "HAY DATOS" );
@@ -157,9 +157,9 @@ void promedio_variable ( char * variable )
 
 		float acumulador = 0, contador = 0;
 
-		for ( int i = 0; i < num_estaciones; ++i )
+		for ( int i = 0; i < num_estaciones; i = i + 1 )
 		{
-			for ( int j = 0; j < estaciones[i].contador_datos; ++j )
+			for ( int j = 0; j < estaciones[i].contador_datos; j = j +1 )
 			{
 				if ( strcmp ( variable, "Temperatura" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].temp; }
 				else if ( strcmp ( variable, "Humedad" ) == 0 ) { acumulador = acumulador + estaciones[i].buffer[j].hum; }
@@ -237,7 +237,7 @@ void promedio_variable ( char * variable )
 			fprintf(f, "<h2 class=\"text-center\"> Estacion Meteorologica %s </h2>\n", station.nombre);
 			print_table_header(f);
 
-			for ( int i = 0; i < station.contador_datos; ++i )
+			for ( int i = 0; i < station.contador_datos; i = i + 1 )
 			{
 				int j = station.buffer[i].fecha.tm_mon;
 
@@ -311,7 +311,7 @@ void promedio_variable ( char * variable )
 			float acumulador = 0;
 			dia_actual = station.buffer[0].fecha.tm_mday;
 
-			for ( int i = 0; i < station.contador_datos; ++i )
+			for ( int i = 0; i < station.contador_datos; i = i + 1)
 			{
 				int j = station.buffer[i].fecha.tm_mday;
 
@@ -361,7 +361,7 @@ void promedio_variable ( char * variable )
 			//fprintf(f, "<h2 class=\"text-center\"> Estacion Meteorologica %s </h2>\n", station.nombre);
 			//print_table_header(f);
 
-			for ( int i = 0; i < station.contador_datos; ++i )
+			for ( int i = 0; i < station.contador_datos; i = i + 1 )
 			{
 				char buf[255];
 				strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &station.buffer[i].fecha );
