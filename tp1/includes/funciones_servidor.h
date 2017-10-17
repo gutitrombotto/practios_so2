@@ -8,7 +8,7 @@
 const char nombre_usuario[10] = "guti";
 const char contrasena_usuario[10] = "belgrano";
 
-const char prompt [50] = "guti@127.0.0.1:";
+const char prompt [50] = "guti@169.254.0.2:";
 
 char ** split_line(char * line);
 
