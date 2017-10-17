@@ -26,7 +26,7 @@ char ** split_line(char * line){
 
   while (token != NULL) {      //Mientras haya tokens
     tokens[position] = token;     //Los guardo en un arreglo
-    position++;
+    position = position + 1;
 
     if (position >= bufsize) { //Si el arreglo excede al tamaño prestablecido, agrando el buffer y sigo guardando
       bufsize += TOKEN_BUFSIZE;
