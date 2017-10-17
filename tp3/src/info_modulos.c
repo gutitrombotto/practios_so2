@@ -90,8 +90,8 @@ int main( int argc, char *argv[] ) {
 	size_t len = 0;
 	ssize_t nread;
 	char **splited_line;
-	int lineas_innecesarias = 1;
-
+	int lineas_innecesarias = 0;
+	int ret;
 
 	fp = fopen("../archivos/lista_modulos.txt", "r+");
 	if ( fp == NULL )
@@ -118,7 +118,7 @@ int main( int argc, char *argv[] ) {
 	fprintf(f, "%s", "<div class=\"container-fluid\">");
 	fprintf(f, "%s", "<div class=\"row\">");
 	fprintf(f, "%s", "<div class=\"col-md-10 col-md-offset-1\">");
-	fprintf(f, "%s", "<h4> ¿Deseas subir un modulo de Kernel? &nbsp; &nbsp; <a class=\"btn btn-default\" href=\"/tp3/cgi/subir-modulo.cgi\"> Subir Modulo </a> </h4>");
+	fprintf(f, "%s", "<h4> ¿Deseas subir un modulo de Kernel? &nbsp; &nbsp; <a class=\"btn btn-default\" href=\"/tp3/cgi/subir-modulo.cgi\"> Subir Modulo </a> &nbsp; &nbsp; <a class=\"btn btn-danger\" href=\"/tp3/cgi/desinstalar_modulo.cgi\"> Borrar Modulos Subidos </a> </h4>");
 	fprintf(f,"%s","</div>");
 	fprintf(f,"%s","</div>");
 	fprintf(f,"%s","</br>");
@@ -174,5 +174,22 @@ int main( int argc, char *argv[] ) {
 
 
 	print_file("../archivos/lista_modulos_html.txt");
+
+	ret = remove("../archivos/lista_modulos_html.txt");
+
+   if(ret == 0) {
+     // printf("File deleted successfully");
+   } else {
+      printf("Error: unable to delete the file");
+   }
+   
+ret = remove("../archivos/lista_modulos.txt");
+
+   if(ret == 0) {
+      //printf("File deleted successfully");
+   } else {
+      printf("Error: unable to delete the file");
+   }
+   
 	return 0;
 }

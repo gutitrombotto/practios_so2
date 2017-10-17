@@ -50,7 +50,7 @@ descarga: $(OBJETOS)
 
 
 subida: $(OBJETOS)
-	gcc $(F_SUBIDA) $(F_GEN) $(CFLAGS) -o $(M_SUB) $(OBJETOS)
+	$(CC) $(F_SUBIDA) $(F_GEN) $(CFLAGS) -o $(M_SUB) $(OBJETOS)
 
 cppcheck:
 	cppcheck --enable=all --inconclusive --std=posix ../tp3 
@@ -68,3 +68,5 @@ copy_vista_estaciones:
 	sudo cp ./html/estaciones.html /var/www/html/tp3/html/
 clean:
 	$(RM) $(OBJETOS) $(MAIN)
+prueba_test: $(OBJETOS)
+	$(CC) ./src/prueba.c $(CFLAGS) -o prueba.o

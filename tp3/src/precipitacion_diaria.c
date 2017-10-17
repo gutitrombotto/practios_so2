@@ -18,17 +18,18 @@ char **parametros;
 char *id;
 int num_funcion;
 
-//cargar_header();
+cargar_header();
 
-//	printf("<body>");
-//	cargar_navbar();
+	printf("<body>");
+	cargar_navbar();
   cargar_archivo();
   printf("</br>");
+/*	printf("Estacion %s \n", estaciones[0].nombre);
 	  printf("ACA VA PRECIPITACION DIARIA\n\n");
-      printf("</br>");
+      printf("</br>"); */
 
 
-/*
+
   if (data != 0)
   {
       parametros = split_line(data);
@@ -44,7 +45,7 @@ int num_funcion;
   }
 
   //printf("Parametros: %s - %s\n", parametros[0], parametros[1]);
-*/
+
 	printf("</body>");
 	printf("%s\n", "</html>");
 

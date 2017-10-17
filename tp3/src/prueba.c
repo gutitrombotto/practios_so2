@@ -1,7 +1,81 @@
 #include "../includes/includes.h"
 #include "../includes/variables.h"
 
+const char * table_header[] = {
+	"<div class=\"container-fluid\">",
+	"<div class=\"panel panel-default\">",
+	"<div class=\"panel-heading\">",
+	"<h4>Precipitaciones </h4>",
+	"</div>",
+	"<table class=\"table\">",
+	"<thead>",
+	"<tr>",
+	"<th> Dia </th>",
+	"<th> Precipitaci&oacuten [mm] </th>",
+	"</tr>",
+	"</thead>",
+	"<tbody>",
+	NULL
+};
 
+const char * table_mensual_header[] = {
+	"<div class=\"container-fluid\">",
+	"<div class=\"panel panel-default\">",
+	"<div class=\"panel-heading\">",
+	"<h4>Precipitaciones Mensuales </h4>",
+	"</div>",
+	"<table class=\"table\">",
+	"<thead>",
+	"<tr>",
+	"<th> Mes </th>",
+	"<th> Precipitaci&oacuten [mm] </th>",
+	"</tr>",
+	"</thead>",
+	"<tbody>",
+	NULL
+};
+
+const char * table_promedio_header[] = {
+	"<div class=\"container-fluid\">",
+	"<div class=\"panel panel-default\">",
+	"<table class=\"table\">",
+	"<thead>",
+	"<tr>",
+	"<th> Estacion </th>",
+	"<th> Promedio </th>",
+	"</tr>",
+	"</thead>",
+	"<tbody>",
+	NULL
+};
+
+
+void print_table_header(FILE *f)
+{
+	for (int i = 0; table_header[i] != NULL ; ++i)
+	{
+		fprintf ( f, "%s", table_header[i] );
+	}
+	return;
+}
+
+void print_table_mes_header(FILE *f)
+{
+	for (int i = 0; table_mensual_header[i] != NULL ; ++i)
+	{
+		fprintf ( f, "%s", table_mensual_header[i] );
+	}
+	return;
+}
+
+void print_table_promedio_header(FILE *f)
+{
+	for (int i = 0; table_promedio_header[i] != NULL ; ++i)
+	{
+		fprintf ( f, "%s", table_promedio_header[i] );
+	}
+	return;
+}
 struct tm string_to_time ( char * str_to_tm )
 {
     struct tm tm;
@@ -22,7 +96,7 @@ struct Estacion_Meteorologica * get_station ( unsigned int id_estacion,
     strcpy ( estaciones[num_estaciones].nombre, ( const char * ) nombre_estacion );
     estaciones[num_estaciones].contador_datos = 0;
     num_estaciones = num_estaciones + 1;
-//    printf ( "%s :  %s\n", "NUEVA ESTACION", estaciones[num_estaciones - 1].nombre );
+    printf ( "%s :  %s\n", "NUEVA ESTACION", estaciones[num_estaciones - 1].nombre );
     return &estaciones[num_estaciones - 1];
 }
 
@@ -140,12 +214,11 @@ void setear_datos ( char * line )
             line_counter = line_counter + 1;
             token = strtok_r ( NULL, s, &saveptr );
         }
+
     data = crear_dato_estacion ( fecha, temp, hum, pto_roc, precip, vel_viento,
                           dir_viento, raf_max, presion, rad_solar, temp_suelo );
-
-	setear_dato_a_estacion ( station, data );
-   // print_aws_station(*station);
-return;
+    setear_dato_a_estacion ( station, data );
+    //print_aws_station(*station);
 }
 
 
@@ -169,17 +242,78 @@ void cargar_archivo(){
 
     while (getline(&line, &len, fp)) {
         if (!lineas_innecesarias)    break;
-        lineas_innecesarias --;
+        lineas_innecesarias = lineas_innecesarias - 1;
     }
     while((nread = getline(&line, &len, fp))!= -1){
     
         setear_datos(line);
-	//printf("DATOS SETEADOS \n");
-//	printf("%s \n", line);
     }
-//	printf("POR HACE FREE");
     free(line);
     fclose(fp);
-//	printf("Estacion %s \n", estaciones[0].nombre);
-return;
+}
+
+	void diario_precipitacion ( unsigned int id_estacion )
+	{
+		struct Estacion_Meteorologica station;
+
+		if ( estacion_por_id ( id_estacion, &station ) == 0 )
+		{
+			perror ( "NUMERO DE ESTACION NO VALIDO" );
+			return;
+		}
+
+		FILE *f = fopen ( A_DIARIO_PRECIP, "w" );
+
+
+		if ( f == NULL )
+		{
+			
+			printf ( "Error opening file!\n" );
+			//perror("FILE");
+			exit ( 1 );
+		}
+		else
+		{
+			fprintf(f, "<h2 class=\"text-center\"> Estacion Meteorologica %s </h2>\n", station.nombre);
+			print_table_header(f);
+			int dia_actual;
+			float acumulador = 0;
+			dia_actual = station.buffer[0].fecha.tm_mday;
+
+			for ( int i = 0; i < station.contador_datos; ++i )
+			{
+				int j = station.buffer[i].fecha.tm_mday;
+
+				if ( j == dia_actual ) { acumulador = acumulador + station.buffer[i].precip; }
+				else
+				{
+					fprintf(f, "<tr>\n");
+					fprintf(f, "<td> %i </td> \n", dia_actual);
+					fprintf(f, "<td> %.3f </td> \n", acumulador);
+					fprintf(f, "</tr>\n");
+
+
+							//fprintf ( f, "PRECIPITACIONES DIA %i --> %f \n", dia_actual, acumulador );
+					dia_actual = j;
+					acumulador = station.buffer[i].precip;
+				}
+			}
+			fprintf(f, "<tr>\n");
+			fprintf(f, "<td> %i </td> \n", dia_actual);
+			fprintf(f, "<td> %f </td> \n", acumulador);
+			fprintf(f, "</tr>\n");
+
+			//fprintf ( f, "PRECIPITACIONES DIA %i --> %f \n", dia_actual, acumulador );
+			fprintf(f, "</tbody></table></div></div>\n");
+			fclose ( f );
+		}
+		fprintf(f, "</tbody></table></div></div>\n");
+
+	}
+
+int main(int argc, char const *argv[])
+{
+    cargar_archivo();
+	diario_precipitacion(30135);
+    return 0;
 }
