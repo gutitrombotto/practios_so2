@@ -8,8 +8,8 @@
 const char * funciones_servidor[] = {
     "Funciones del Servidor:",
     "\t listar",
-    "\t mensual_precipitacion [numero_de_estacion]",
-    "\t diario_precipitacion [numero_de_estacion]",
+    "\t precipitacion_mensual [numero_de_estacion]",
+    "\t precipitacion_diaria [numero_de_estacion]",
     "\t promedio [nombre_variable]",
     "\t descargar [numero_de_estacion]",
     "\t desconectar",
