@@ -10,7 +10,7 @@ struct tm string_to_time ( char * str_to_tm )
     return tm;
 }
 
-struct Estacion_Meteorologica * get_station ( unsigned int id_estacion,
+struct Estacion_Meteorologica * get_estacion ( unsigned int id_estacion,
                                   char * nombre_estacion )
 {
     for ( int i = 0; i < num_estaciones; i = i + 1 )
@@ -26,20 +26,20 @@ struct Estacion_Meteorologica * get_station ( unsigned int id_estacion,
     return &estaciones[num_estaciones - 1];
 }
 
-void setear_dato_a_estacion ( struct Estacion_Meteorologica * station, struct Datos_Estaciones data )
+void setear_dato_a_estacion ( struct Estacion_Meteorologica * estacion, struct Datos_Estaciones dato_estacion )
 {
-    station->buffer[station->contador_datos] = data;
-    station->contador_datos = station->contador_datos + 1;
+    estacion->buffer[estacion->contador_datos] = dato_estacion;
+    estacion->contador_datos = estacion->contador_datos + 1;
     return;
 }
 
-int estacion_por_id ( unsigned int id_estacion, struct Estacion_Meteorologica * station )
+int estacion_por_id ( unsigned int id_estacion, struct Estacion_Meteorologica * estacion )
 {
     for ( int i = 0; i < num_estaciones; i = i + 1 )
         {
             if ( estaciones[i].estacion_id == id_estacion )
                 {
-                    *station = estaciones[i];
+                    *estacion = estaciones[i];
                     return 1;
                 }
         }
@@ -67,20 +67,20 @@ struct Datos_Estaciones crear_dato_estacion ( char * fecha, float temp, float hu
                               float raf_max,
                               float presion, float rad_solar, float temp_suelo )
 {
-    struct Datos_Estaciones data;
-    data.fecha = string_to_time ( fecha );
-    data.temp = temp;
-    data.hum = hum;
-    data.pto_roc = pto_roc;
-    data.vel_viento = vel_viento;
-    data.precip =  precip;
-    data.raf_max = raf_max;
-    data.presion = presion;
-    data.rad_solar = rad_solar;
-    data.temp_suelo = temp_suelo;
-    //data.dir_viento = dir_viento;
-    strcpy ( data.dir_viento, ( const char * ) dir_viento );
-    return data;
+    struct Datos_Estaciones dato_estacion;
+    dato_estacion.fecha = string_to_time ( fecha );
+    dato_estacion.temp = temp;
+    dato_estacion.hum = hum;
+    dato_estacion.pto_roc = pto_roc;
+    dato_estacion.vel_viento = vel_viento;
+    dato_estacion.precip =  precip;
+    dato_estacion.raf_max = raf_max;
+    dato_estacion.presion = presion;
+    dato_estacion.rad_solar = rad_solar;
+    dato_estacion.temp_suelo = temp_suelo;
+    //dato_estacion.dir_viento = dir_viento;
+    strcpy ( dato_estacion.dir_viento, ( const char * ) dir_viento );
+    return dato_estacion;
 }
 
 void setear_datos ( char * line )
@@ -90,8 +90,8 @@ void setear_datos ( char * line )
     int line_counter = 0;
     char dir_viento[20];
     char * fecha;
-    struct Datos_Estaciones data;
-    struct Estacion_Meteorologica * station;
+    struct Datos_Estaciones dato_estacion;
+    struct Estacion_Meteorologica * estacion;
     float temp, hum, pto_roc, precip, vel_viento, raf_max, presion, rad_solar,
           temp_suelo;
     const char s[2] = ",";
@@ -105,7 +105,7 @@ void setear_datos ( char * line )
                     id_estacion = atoi ( token );
                 }
 
-            if ( line_counter == 1 ) { station = get_station ( id_estacion, token ); }
+            if ( line_counter == 1 ) { estacion = get_estacion ( id_estacion, token ); }
 
             if ( line_counter == 3 ) { fecha = token; }
 
@@ -141,10 +141,10 @@ void setear_datos ( char * line )
             token = strtok_r ( NULL, s, &saveptr );
         }
 
-    data = crear_dato_estacion ( fecha, temp, hum, pto_roc, precip, vel_viento,
+    dato_estacion = crear_dato_estacion ( fecha, temp, hum, pto_roc, precip, vel_viento,
                           dir_viento, raf_max, presion, rad_solar, temp_suelo );
-    setear_dato_a_estacion ( station, data );
-    //print_aws_station(*station);
+    setear_dato_a_estacion ( estacion, dato_estacion );
+    //print_aws_estacion(*estacion);
 }
 
 

@@ -15,9 +15,10 @@ int main ( int argc, char* argv[] )
 	char buffer [TAM];
 	char prompt [50];
 	char ** linea_parseada;
-	char * datos_coneccion [] = { "connect", "guti", "127.0.0.1", "6020", NULL};
+	//char * datos_coneccion [] = { "connect", "guti", "127.0.0.1", "6020", NULL};
+	char * datos_coneccion [] = { "connect", "guti", "169.254.0.2", "6020", NULL};
 
-
+	printf("Socket disponible en %s\n", datos_coneccion[2]);
 
 	while( status )
 	{
@@ -141,7 +142,7 @@ int main ( int argc, char* argv[] )
 	
 	while(1)
 	{
-		printf("%s\n", "En eleccion_funcion");
+		//printf("%s\n", "En eleccion_funcion");
 		if (terminar)
 		{
 			printf("Cerrando Cliente...\n");
@@ -168,7 +169,7 @@ int main ( int argc, char* argv[] )
 				//printf("%s\n", "Estoy en descargo udp");
 					//tamano_direccion = sizeof ( serv_addr );
 					//socklen_t slen = sizeof serv_addr;
-				printf( "Iniciando transmision..." );
+				printf( "Iniciando transmision UDP... \n" );
 				memset( buffer, 0, TAM );
 				strcpy ( buffer, ( const char * ) "dale" );
 
@@ -196,8 +197,11 @@ int main ( int argc, char* argv[] )
 					exit ( 1 );
 				}
 
+				printf("%s\n", "Descargando Archivo...");
 				while ( strncmp ( buffer, "FIN_UDP", strlen ( "FIN_UDP" )) != 0 )
 				{
+					if (!strncmp ( buffer, "FIN_UDP", strlen ( "FIN_UDP" ))) break;
+
 					n = recvfrom( socket_udp, (void *)buffer, TAM, MSG_WAITALL, (struct sockaddr *)&serv_addr, &slen );
 					if ( n < 0 ) {
 						perror( "Lectura de socket" );
@@ -207,14 +211,14 @@ int main ( int argc, char* argv[] )
 					{
 						printf(" Se perdio un paquete \n" );
 					}
-					printf( "Respuesta: %s\n", buffer );
+					//printf( "Respuesta: %s\n", buffer );
 					fprintf(fp, "%s", buffer);
 					if (!strncmp ( buffer, "FIN_UDP", strlen ( "FIN_UDP" ))) break;
 
 					memset( buffer, 0, sizeof( buffer ) );
 				}
 				fclose ( fp );
-
+				printf("%s\n", "Fin de la descarga");
 				break;
 					/* FIN MSG UDP*/
 

@@ -6,7 +6,8 @@
 #define VARIABLES_H
 
 #define TAM 512
-
+#define CANT_ESTACIONES 10
+#define CANT_DATOS 15000
 #include "../includes/includes.h"
 
 #define A_LISTAR "../archivos/listar.txt"
@@ -46,18 +47,17 @@ struct Estacion_Meteorologica{
     char nombre[100];
     unsigned int estacion_id;
     int contador_datos;
-    struct Datos_Estaciones buffer[16000];
+    struct Datos_Estaciones buffer[CANT_DATOS];
 
 }; 
 
 
 
-struct Estacion_Meteorologica estaciones[100];
+struct Estacion_Meteorologica estaciones[CANT_ESTACIONES];
 
 int num_estaciones;
 
 int estacion_por_id ( unsigned int id_estacion, struct Estacion_Meteorologica * station );
-void print_aws_station ( struct Estacion_Meteorologica station );
 
 
 

@@ -7,11 +7,11 @@
 
 struct tm string_to_time ( char * str_to_tm );
 
-struct Estacion_Meteorologica * get_station ( unsigned int id_estacion,
+struct Estacion_Meteorologica * get_estacion ( unsigned int id_estacion,
                                   char * nombre_estacion );
 
 
-void setear_dato_a_estacion ( struct Estacion_Meteorologica * station, struct Datos_Estaciones data );
+void setear_dato_a_estacion ( struct Estacion_Meteorologica * estacion, struct Datos_Estaciones dato_estacion );
 
 
 int existe_estacion ( int id_estacion );

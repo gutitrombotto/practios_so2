@@ -5,7 +5,7 @@
 void listar()
 {
 	//printf("%s\n", "EStoy en listar");
-	char * index [] = {"Station ID", "Station", "??", "Fecha", "Temperatura", "Humedad", "Punto de rocio", "Precipitacion", "Velocidad del viento",
+	char * index [] = {"estacion ID", "estacion", "??", "Fecha", "Temperatura", "Humedad", "Punto de rocio", "Precipitacion", "Velocidad del viento",
 	                   "Direccion", "Rafaga Maxima", "Presion", "Radiacion Solar", "Temperatura del suelo1", "Temperatura del suelo2", "Temperatura del suelo3",
 	                   "Humedad de suelo 1", "Humedad de suelo 2", "Humedad de suelo 3", "Humedad de hoja", "  ", " "
 	                  };
@@ -117,10 +117,10 @@ void promedio_variable ( char * variable )
 
 void mensual_precipitacion ( unsigned int id_estacion )
 {
-	struct Estacion_Meteorologica station;
+	struct Estacion_Meteorologica estacion;
 	
 
-	if ( estacion_por_id ( id_estacion, &station ) == 0 )
+	if ( estacion_por_id ( id_estacion, &estacion ) == 0 )
 		{
 			perror ( "NUMERO DE ESTACION NO VALIDO" );
 			return;
@@ -140,13 +140,13 @@ void mensual_precipitacion ( unsigned int id_estacion )
 	                  };
 			int mes_actual;
 			float acumulador = 0;
-			mes_actual = station.buffer[0].fecha.tm_mon;
+			mes_actual = estacion.buffer[0].fecha.tm_mon;
 
-			for ( int i = 0; i < station.contador_datos; i = i + 1 )
+			for ( int i = 0; i < estacion.contador_datos; i = i + 1 )
 				{
-					int j = station.buffer[i].fecha.tm_mon;
+					int j = estacion.buffer[i].fecha.tm_mon;
 
-					if ( j == mes_actual ) { acumulador = acumulador + station.buffer[i].precip; }
+					if ( j == mes_actual ) { acumulador = acumulador + estacion.buffer[i].precip; }
 					else
 						{
 							if (acumulador == 0)
@@ -155,7 +155,7 @@ void mensual_precipitacion ( unsigned int id_estacion )
 							} else {
 								fprintf ( f, "Precipitacion del Mes %i - %s :   %.3f \n", mes_actual, meses[j], acumulador );
 								mes_actual = j;
-								acumulador = station.buffer[i].precip;
+								acumulador = estacion.buffer[i].precip;
 							}
 						}
 				}
@@ -171,9 +171,9 @@ void mensual_precipitacion ( unsigned int id_estacion )
 
 void diario_precipitacion ( unsigned int id_estacion )
 {
-	struct Estacion_Meteorologica station;
+	struct Estacion_Meteorologica estacion;
 
-	if ( estacion_por_id ( id_estacion, &station ) == 0 )
+	if ( estacion_por_id ( id_estacion, &estacion ) == 0 )
 		{
 			perror ( "NUMERO DE ESTACION NO VALIDO" );
 			return;
@@ -190,18 +190,18 @@ void diario_precipitacion ( unsigned int id_estacion )
 		{
 			int dia_actual;
 			float acumulador = 0;
-			dia_actual = station.buffer[0].fecha.tm_mday;
+			dia_actual = estacion.buffer[0].fecha.tm_mday;
 
-			for ( int i = 0; i < station.contador_datos; i = i + 1 )
+			for ( int i = 0; i < estacion.contador_datos; i = i + 1 )
 				{
-					int j = station.buffer[i].fecha.tm_mday;
+					int j = estacion.buffer[i].fecha.tm_mday;
 
-					if ( j == dia_actual ) { acumulador = acumulador + station.buffer[i].precip; }
+					if ( j == dia_actual ) { acumulador = acumulador + estacion.buffer[i].precip; }
 					else
 						{
 							fprintf ( f, "Precipitacion del Dia %i:   %.3f \n", dia_actual, acumulador );
 							dia_actual = j;
-							acumulador = station.buffer[i].precip;
+							acumulador = estacion.buffer[i].precip;
 						}
 				}
 
@@ -213,8 +213,8 @@ void diario_precipitacion ( unsigned int id_estacion )
 
 void descargar ( int id_estacion )
 {
-	struct Estacion_Meteorologica station;
-	estacion_por_id ( id_estacion, &station );
+	struct Estacion_Meteorologica estacion;
+	estacion_por_id ( id_estacion, &estacion );
 
 	FILE *fp = fopen ( A_DESCARGAR, "w" );
 
@@ -225,23 +225,23 @@ void descargar ( int id_estacion )
 	}
 	else
 	{
-		fprintf ( fp, "DATOS DE LA ESTACION %s \n \n", station.nombre);
+		fprintf ( fp, "DATOS DE LA ESTACION %s \n \n", estacion.nombre);
 
-		for ( int i = 0; i < station.contador_datos; i = i + 1 )
+		for ( int i = 0; i < estacion.contador_datos; i = i + 1 )
 		{
 			char buf[255];
-			strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &station.buffer[i].fecha );
+			strftime ( buf, sizeof ( buf ), "%d %b %Y %H:%M", &estacion.buffer[i].fecha );
 			fprintf(fp, "Fecha:  %s\n", buf);					
-			fprintf(fp, "Temperatura:  %.2f\n", station.buffer[i].temp);
-			fprintf(fp, "Humedad:  %.2f\n", station.buffer[i].hum);
-			fprintf(fp, "Punto de Rocio:  %.2f\n", station.buffer[i].pto_roc);
-			fprintf(fp, "Velocidad Viento:  %.2f\n", station.buffer[i].vel_viento);
-			fprintf(fp, "Precipitacion:  %.2f\n", station.buffer[i].precip);
-			fprintf(fp, "Rafaga Maxima:  %.2f\n", station.buffer[i].raf_max);
-			fprintf(fp, "Presion:  %.2f\n", station.buffer[i].presion);
-			fprintf(fp, "Radiacion Solar:  %.2f\n", station.buffer[i].rad_solar);
-			fprintf(fp, "Temperatura Suelo:  %.2f\n", station.buffer[i].temp_suelo);
-			fprintf(fp, "Direccion Viento:  %s\n", station.buffer[i].dir_viento);
+			fprintf(fp, "Temperatura:  %.2f\n", estacion.buffer[i].temp);
+			fprintf(fp, "Humedad:  %.2f\n", estacion.buffer[i].hum);
+			fprintf(fp, "Punto de Rocio:  %.2f\n", estacion.buffer[i].pto_roc);
+			fprintf(fp, "Velocidad Viento:  %.2f\n", estacion.buffer[i].vel_viento);
+			fprintf(fp, "Precipitacion:  %.2f\n", estacion.buffer[i].precip);
+			fprintf(fp, "Rafaga Maxima:  %.2f\n", estacion.buffer[i].raf_max);
+			fprintf(fp, "Presion:  %.2f\n", estacion.buffer[i].presion);
+			fprintf(fp, "Radiacion Solar:  %.2f\n", estacion.buffer[i].rad_solar);
+			fprintf(fp, "Temperatura Suelo:  %.2f\n", estacion.buffer[i].temp_suelo);
+			fprintf(fp, "Direccion Viento:  %s\n", estacion.buffer[i].dir_viento);
 			fprintf(fp, "%s\n", "---------------------------------------------");
 
 		}
