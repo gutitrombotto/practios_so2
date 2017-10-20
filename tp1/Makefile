@@ -12,10 +12,10 @@ MAIN_SV=./bin/servidor
 MAIN_CLI=./bin/cliente
 
 server: $(OBJETOS)
-	gcc $(FUENTES_SV) $(CFLAGS) -o $(MAIN_SV) $(OBJETOS)
+	gcc -std=c99 $(FUENTES_SV) $(CFLAGS) -o $(MAIN_SV) $(OBJETOS)
 
 client: $(OBJETOS)
-	gcc $(FUENTEs_CLI) $(CFLAGS) -o $(MAIN_CLI) $(OBJETOS)	
+	gcc -std=c99 $(FUENTEs_CLI) $(CFLAGS) -o $(MAIN_CLI) $(OBJETOS)	
 
 normal:
 	gcc test1.c -Wall -pedantic -o test1
@@ -29,4 +29,6 @@ cppcheck:
 	cppcheck --enable=all --inconclusive --std=posix ../tp1  
 
 clean:
-	$(RM) $(OBJETOS) $(MAIN)
+	rm -f $(MAIN_SV)
+	rm -f $(MAIN_CLI)
+
