@@ -15,7 +15,6 @@
 #define CANT_VSxP 250
 #define MAX_DATOS_LECTURA 5000
 #define TOTAL_GATES 500
-#define GUARDAR 0
 
 struct Lectura{
 	float lectura_i;
@@ -43,7 +42,15 @@ float autocorr_M_H [TOTAL_GATES];
 
 int main(int argc, char *argv[])
 {
+    if ( !argv[1] || !argv[2])
+    {
+        printf("%s\n", "Escriba ./ <nombre_del_programa> t [num_hilos]");
+        return 0;
+    }
+    if ( !strcmp ( "t", argv[1] ) ) {omp_set_num_threads ( atoi ( argv[2] ) ); }
+    else { omp_set_num_threads ( 1 ); }
 
+    printf ( "%d \n", omp_get_max_threads());
 
     clock_t start, end;
     double cpu_time_used_lectura_pulsos, cpu_time_used_matrices, cpu_time_used_correlacion, cpu_time_used_total, cpu_time_used_cant_pulsos;
@@ -106,11 +113,14 @@ int main(int argc, char *argv[])
 
     float M_v[cant_pulsos][TOTAL_GATES];
     float M_h[cant_pulsos][TOTAL_GATES];
-
+    int ecuacion = 0;
+    float val_abs_v = 0.0, val_abs_h = 0.0;
 
     byte_leidos = 0;
     start = clock();
 
+
+    #pragma omp parallel for private(i,ecuacion , limite_gate, byte_leidos,val_abs_v,val_abs_h) shared(buffer,M_v,M_h, posicion_pulso)
     for ( i = 0; i < cant_pulsos; i++ )
     {
         //printf("%d\n", i);
@@ -118,16 +128,17 @@ int main(int argc, char *argv[])
 
         byte_leidos = posicion_pulso[i];
 
-        int diff = vs_por_pulso[i] - tamano_gate_por_pulso[i] * TOTAL_GATES;//MAGIA
+        ecuacion = vs_por_pulso[i] - tamano_gate_por_pulso[i] * TOTAL_GATES;//MAGIA
 
     	/* Todas las lecturas de un pulso */
         int cant = 0;
         limite_gate = 0;
         for (int k = 0; k < TOTAL_GATES; k++)
         {
-            float val_abs_v = 0.0, val_abs_h = 0.0;
+            val_abs_v = 0.0;
+            val_abs_h = 0.0;
 
-            if ( k >= diff ) { limite_gate = tamano_gate_por_pulso[i]; }
+            if ( k >= ecuacion ) { limite_gate = tamano_gate_por_pulso[i]; }
             else { limite_gate = tamano_gate_por_pulso[i] + 1; }
 
 
@@ -162,26 +173,31 @@ int main(int argc, char *argv[])
 
     float accumulador;
     start = clock();
-
-    for (int i = 0; i < TOTAL_GATES; ++i)
+    #pragma omp parallel sections
     {
-        accumulador = 0;
-        for (int j = 0; j < cant_pulsos; ++j)
+        #pragma omp section
+        for (int i = 0; i < TOTAL_GATES; ++i)
         {
-            accumulador += M_v[j][i] * M_h[j + 1][i];
+            accumulador = 0;
+            for (int j = 0; j < cant_pulsos; ++j)
+            {
+                accumulador += M_v[j][i] * M_h[j + 1][i];
+            }
+            autocorr_M_V[i] = accumulador / cant_pulsos;
         }
-        autocorr_M_V[i] = accumulador / cant_pulsos;
-    }
+        #pragma omp section
+        for (int i = 0; i < TOTAL_GATES; ++i)
+        {
+            accumulador = 0;
+            for (int j = 0; j < cant_pulsos; ++j)
+            {
+                accumulador += M_h[j][i] * M_h[j + 1][i];
+            }
+            autocorr_M_H[i] = accumulador / cant_pulsos;
+        }
 
-    for (int i = 0; i < TOTAL_GATES; ++i)
-    {
-        accumulador = 0;
-        for (int j = 0; j < cant_pulsos; ++j)
-        {
-            accumulador += M_h[j][i] * M_h[j + 1][i];
-        }
-        autocorr_M_H[i] = accumulador / cant_pulsos;
     }
+    
 
     end = clock();
     cpu_time_used_correlacion = ((double) (end - start)) / CLOCKS_PER_SEC;
@@ -194,16 +210,13 @@ int main(int argc, char *argv[])
     cpu_time_used_total = cpu_time_used_lectura_pulsos + cpu_time_used_cant_pulsos + cpu_time_used_matrices + cpu_time_used_correlacion;
     printf("Tiempo total de ejecucion %f \n", cpu_time_used_total);
 
-    if (GUARDAR)
-    {
-        if(guardar_resultados(A_RESULTADOS, cant_pulsos) == 0){
-            printf("%s\n", "Resultados Guardados correctamente");
-
-        } else {
-            return 1;
-        }
-    }
     
+    if(guardar_resultados(A_RESULTADOS, cant_pulsos) == 0){
+        printf("%s\n", "Resultados Guardados correctamente");
+        
+    } else {
+        return 1;
+    }
 
     return 0;
 
